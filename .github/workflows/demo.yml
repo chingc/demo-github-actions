@@ -1,0 +1,31 @@
+name: Demo
+
+on: push
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+
+      - name: Display python version
+        run: |
+          python -V
+          pip -V
+
+      - name: Install python dependencies
+        run: |
+          pip install --upgrade pip setuptools wheel
+          pip install --requirement requirements.txt
+
+      - name: Run test
+        run: pytest
