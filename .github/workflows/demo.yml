@@ -21,7 +21,7 @@ jobs:
           python-version: '3.x'
           cache: 'pip'
 
-      - name: Display python version
+      - name: Show python version
         run: |
           python -V
           pip -V
