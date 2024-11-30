@@ -16,8 +16,17 @@ The most basic workflow to do all the essentials.
 - Installs `requirements.txt` and runs a simple test
 - Includes `dependabot.yml` to automatically check for package updates
 
+## github_script.yml
+
+GitHub provides an action that lets you easily write javascript directly in your workflow.
+
+The action includes an object with the current workflow context and references to several other useful packages. It's also a pre-authenticated octokit/rest.js client.
+
+- Uses [actions/github-script](https://github.com/actions/github-script)
+
 ## References
 
 - [GitHub Docs: GitHub Actions](https://docs.github.com/en/actions)
 - [GitHub Docs: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
 - [GitHub Docs: Configuration options for the dependabot.yml file](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file)
+- [octokit/rest.js API documentation](https://octokit.github.io/rest.js)
