@@ -2,7 +2,7 @@
 
 A collection of GitHub Actions workflows where I demonstrate various capabilities and features.
 
-Each are described below. They serve as a quickstart and reference for my future self.
+They serve as a quickstart and reference for my future self. Each are described below.
 
 ## basic.yml
 
