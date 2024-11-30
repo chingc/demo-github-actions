@@ -1,0 +1,38 @@
+name: Env Var PATH
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 1 * *'  # midnight every month (utc)
+  workflow_dispatch:
+
+jobs:
+  one:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show PATH
+        run: echo "PATH is '${PATH}'"
+
+      - name: Add PATH (takes effect in subsequent steps)
+        run: |
+          echo "${HOME}/imaginary" >> "${GITHUB_PATH}"
+          echo "PATH is '${PATH}'"
+
+      - name: Show updated PATH
+        run: echo "PATH is '${PATH}'"
+
+  two:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Changes made in other jobs are isolated
+        run: echo "PATH is '${PATH}'"
+
+      - name: Using export works for the current step
+        run: |
+          export PATH="${HOME}/imaginary:${PATH}"
+          echo "PATH is '${PATH}'"
+
+      - name: Using export does not persist to subsequent steps
+        run: echo "PATH is '${PATH}'"
