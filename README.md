@@ -41,6 +41,24 @@ This can be helpful for debugging workflow errors or bugs.
 
 - Shows various contexts
 
+## env_var.yml
+
+Environment variables and their scopes work as you'd expect in GitHub Actions.
+
+They're also fairly self-contained, so any changes you make are isolated to the job you're in.
+
+One quirk that can cause confusion is the fact that environment variables defined within a step aren't accessible until the next step.
+
+- Read env vars
+- Write env vars
+- Pass env vars
+
+## env_var_path.yml
+
+Read, write, and modify PATH like any other environment variable. It has the same quirks.
+
+- Modify PATH env var
+
 ## github_script.yml
 
 GitHub provides an action that lets you easily write javascript directly in your workflow.
@@ -64,8 +82,11 @@ This demo shows how you can leverage its power and convenience to install applic
 - [GitHub Docs: GitHub Actions](https://docs.github.com/en/actions)
 
 - [GitHub Docs: Accessing contextual information about workflow runs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/contexts)
+- [GitHub Docs: Adding a system path](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-system-path)
 - [GitHub Docs: Configuration options for the dependabot.yml file](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file)
 - [GitHub Docs: Events that trigger workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows)
+- [GitHub Docs: jobs.<job_id>.outputs](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idoutputs)
+- [GitHub Docs: Setting an environment variable](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-environment-variable)
 - [GitHub Docs: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
 
 - [Homebrew: The Missing Package Manager for macOS (or Linux)](https://brew.sh)
