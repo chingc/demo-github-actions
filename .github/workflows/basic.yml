@@ -1,4 +1,4 @@
-name: Demo
+name: Basic
 
 on:
   push:
@@ -30,4 +30,4 @@ jobs:
           pip install --requirement requirements.txt
 
       - name: Run test
-        run: pytest
+        run: pytest basic.py

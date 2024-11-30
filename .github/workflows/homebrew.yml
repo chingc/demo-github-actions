@@ -1,0 +1,29 @@
+name: Homebrew
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 1 * *'  # midnight every month (utc)
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check brew
+        run: which brew || echo 'Program not found'
+
+      - name: Check fortune
+        run: which fortune || echo 'Program not found'
+
+      - name: Setup homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Setup fortune
+        run: brew install fortune
+
+      - name: Run fortune
+        run: |
+          which fortune
+          fortune
