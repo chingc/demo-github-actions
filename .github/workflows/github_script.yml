@@ -1,4 +1,4 @@
-name: github_script.yml
+name: GitHub Script
 
 on:
   push:

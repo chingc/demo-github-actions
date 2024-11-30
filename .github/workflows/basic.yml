@@ -1,4 +1,4 @@
-name: basic.yml
+name: Basic
 
 on:
   push:
