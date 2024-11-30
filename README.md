@@ -16,6 +16,16 @@ The most basic workflow to do all the essentials.
 - Installs `requirements.txt` and runs a simple test
 - Includes `dependabot.yml` to automatically check for package updates
 
+## context.yml
+
+Contexts are a way to access information about workflow runs, variables, runner environments, jobs, and steps.
+
+This can be helpful for debugging workflow errors or bugs.
+
+> Warning: Be careful when printing the entire context as it may contain sensitive information.
+
+- Shows various contexts
+
 ## github_script.yml
 
 GitHub provides an action that lets you easily write javascript directly in your workflow.
@@ -29,4 +39,5 @@ The action includes an object with the current workflow context and references t
 - [GitHub Docs: GitHub Actions](https://docs.github.com/en/actions)
 - [GitHub Docs: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
 - [GitHub Docs: Configuration options for the dependabot.yml file](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file)
+- [GitHub Docs: Accessing contextual information about workflow runs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/contexts)
 - [octokit/rest.js API documentation](https://octokit.github.io/rest.js)
