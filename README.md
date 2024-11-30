@@ -1,8 +1,12 @@
 # Demo
 
-A quick demo of a basic GitHub Actions workflow.
+A collection of GitHub Actions workflows where I demonstrate various capabilities and features.
 
-## Overview
+Each are described below. They serve as a quickstart and reference for my future self.
+
+## basic.yml
+
+The most basic workflow to do all the essentials.
 
 - Runs when changes are pushed
 - Runs on a schedule
