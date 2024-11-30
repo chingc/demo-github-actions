@@ -80,7 +80,7 @@ This demo shows how you can leverage its power and convenience to install applic
 ## References
 
 - [GitHub Docs: GitHub Actions](https://docs.github.com/en/actions)
-
+<br/><br/>
 - [GitHub Docs: Accessing contextual information about workflow runs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/contexts)
 - [GitHub Docs: Adding a system path](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-system-path)
 - [GitHub Docs: Configuration options for the dependabot.yml file](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file)
@@ -88,8 +88,9 @@ This demo shows how you can leverage its power and convenience to install applic
 - [GitHub Docs: jobs.<job_id>.outputs](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idoutputs)
 - [GitHub Docs: Setting an environment variable](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-environment-variable)
 - [GitHub Docs: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
-
-- [Homebrew: The Missing Package Manager for macOS (or Linux)](https://brew.sh)
+<br/><br/>
 - [octokit/rest.js API documentation](https://octokit.github.io/rest.js)
+<br/><br/>
+- [Homebrew: The Missing Package Manager for macOS (or Linux)](https://brew.sh)
 - [Stack Overflow: How to get a branch name on GitHub action when push on a tag?](https://stackoverflow.com/q/63745613)
 - [Stack Overflow: How to get the current branch within Github Actions?](https://stackoverflow.com/q/58033366/808678)
