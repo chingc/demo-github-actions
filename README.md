@@ -16,6 +16,21 @@ The most basic workflow to do all the essentials.
 - Installs `requirements.txt` and runs a simple test
 - Includes `dependabot.yml` to automatically check for package updates
 
+## branch_name.yml
+
+Getting the branch name is a common CI operation. Surprisingly, there's no pre-defined way to get it in GitHub Actions.
+
+This demo shows the simplest way without using 3rd party actions or invoking various tools.
+
+It works in most cases, but there are some quirks.
+
+For example, if your commit is tagged this method will return the tag instead of the branch name. See SO link below.
+
+You may also get an unexpected result depending on the event that triggered the workflow.
+
+- Shows various `github` context properties that may or may not contain the branch name
+- Sets branch name to the top level `env` so it can be accessed by the entire workflow
+
 ## context.yml
 
 Contexts are a way to access information about workflow runs, variables, runner environments, jobs, and steps.
@@ -47,8 +62,13 @@ This demo shows how you can leverage its power and convenience to install applic
 ## References
 
 - [GitHub Docs: GitHub Actions](https://docs.github.com/en/actions)
-- [GitHub Docs: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
-- [GitHub Docs: Configuration options for the dependabot.yml file](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file)
+
 - [GitHub Docs: Accessing contextual information about workflow runs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/contexts)
+- [GitHub Docs: Configuration options for the dependabot.yml file](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file)
+- [GitHub Docs: Events that trigger workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows)
+- [GitHub Docs: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
+
 - [Homebrew: The Missing Package Manager for macOS (or Linux)](https://brew.sh)
 - [octokit/rest.js API documentation](https://octokit.github.io/rest.js)
+- [Stack Overflow: How to get a branch name on GitHub action when push on a tag?](https://stackoverflow.com/q/63745613)
+- [Stack Overflow: How to get the current branch within Github Actions?](https://stackoverflow.com/q/58033366/808678)
