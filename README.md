@@ -6,7 +6,7 @@ They serve as a quickstart and reference for my future self. Each are described 
 
 ## basic.yml
 
-The most basic workflow to do all the essentials.
+A basic workflow to do all the essentials.
 
 - Runs when changes are pushed
 - Runs on a schedule
@@ -24,9 +24,9 @@ This demo shows the simplest way without using 3rd party actions or invoking var
 
 It works in most cases, but there are some quirks.
 
-For example, if your commit is tagged this method will return the tag instead of the branch name. See SO link below.
+For example, if your commit is tagged this method will return the tag instead of the branch name. See SO link in the references for details.
 
-You may also get an unexpected result depending on the event that triggered the workflow.
+You may also get an unexpected result depending on the event that triggered the workflow. This demo is set to trigger on `pull_request` and on `push` to illustrate this behavior.
 
 - Shows various `github` context properties that may or may not contain the branch name
 - Sets branch name to the top level `env` so it can be accessed by the entire workflow
