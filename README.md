@@ -1,4 +1,4 @@
-# Demo
+# Demo: GitHub Actions
 
 A collection of GitHub Actions workflows where I demonstrate various capabilities and features.
 
@@ -69,7 +69,7 @@ The action includes an object with the current workflow context and references t
 
 ## homebrew.yml
 
-If you develop on macOS you're probably familiar with homebrew.
+If you develop on macOS you're probably familiar with [homebrew](https://brew.sh).
 
 Did you know it's also available on Linux?
 
@@ -91,6 +91,5 @@ This demo shows how you can leverage its power and convenience to install applic
 <br/><br/>
 - [octokit/rest.js API documentation](https://octokit.github.io/rest.js)
 <br/><br/>
-- [Homebrew: The Missing Package Manager for macOS (or Linux)](https://brew.sh)
 - [Stack Overflow: How to get a branch name on GitHub action when push on a tag?](https://stackoverflow.com/q/63745613)
 - [Stack Overflow: How to get the current branch within Github Actions?](https://stackoverflow.com/q/58033366/808678)
