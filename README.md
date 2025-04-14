@@ -2,11 +2,11 @@
 
 A collection of GitHub Actions workflows demonstrating various capabilities and features.
 
-They serve as a quickstart and reference for my future self. Each are described below.
+They serve as a quickstart and reference for my future self. Each workflow is described below.
 
 ## basic.yml
 
-A basic workflow to do all the essentials.
+A basic workflow to do the essentials.
 
 - Runs when changes are pushed
 - Runs on a schedule
@@ -53,12 +53,6 @@ One quirk that can cause confusion is the fact that environment variables define
 - Write env vars
 - Pass env vars
 
-## env_var_path.yml
-
-Read, write, and modify PATH like any other environment variable. It has the same quirks.
-
-- Modify PATH env var
-
 ## github_script.yml
 
 GitHub provides an action that lets you easily write javascript directly in your workflow.
@@ -69,13 +63,17 @@ The action includes an object with the current workflow context and references t
 
 ## homebrew.yml
 
-If you develop on macOS you're probably familiar with [homebrew](https://brew.sh).
-
-Did you know it's also available on Linux?
+If you develop on macOS you're probably familiar with [homebrew](https://brew.sh).  Did you know it's also available on Linux?
 
 This demo shows how you can leverage its power and convenience to install applications on GitHub Actions runners.
 
 - Uses [Homebrew/actions/setup-homebrew](https://github.com/Homebrew/actions/tree/master/setup-homebrew)
+
+## system_path.yml
+
+Read, write, and modify PATH like any other environment variable. It has the same quirks.
+
+- Modify PATH env var
 
 ## References
 

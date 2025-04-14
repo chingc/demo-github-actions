@@ -7,17 +7,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  run:
+    name: Run
     runs-on: ubuntu-latest
 
     steps:
       - name: Env context
-        run: echo '${{ toJson(env) }}'
+        run: echo "${{ toJson(env) }}"
         env:
           GREETING: "Hello, World!"
 
       - name: Job context
-        run: echo '${{ toJson(job) }}'
+        run: echo "${{ toJson(job) }}"
 
       - name: Runner context
-        run: echo '${{ toJson(runner) }}'
+        run: echo "${{ toJson(runner) }}"

@@ -1,4 +1,4 @@
-name: Env Var PATH
+name: System PATH
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   one:
+    name: Example 1
     runs-on: ubuntu-latest
 
     steps:
@@ -17,12 +18,14 @@ jobs:
       - name: Add PATH (takes effect in subsequent steps)
         run: |
           echo "${HOME}/imaginary" >> "${GITHUB_PATH}"
+          echo "No effect in the current step."
           echo "PATH is '${PATH}'"
 
       - name: Show updated PATH
         run: echo "PATH is '${PATH}'"
 
   two:
+    name: Example 2
     runs-on: ubuntu-latest
 
     steps:
