@@ -1,6 +1,6 @@
-# Demo: GitHub Actions
+# GitHub Actions
 
-A collection of GitHub Actions workflows where I demonstrate various capabilities and features.
+A collection of GitHub Actions workflows demonstrating various capabilities and features.
 
 They serve as a quickstart and reference for my future self. Each are described below.
 

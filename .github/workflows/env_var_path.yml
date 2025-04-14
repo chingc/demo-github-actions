@@ -3,7 +3,7 @@ name: Env Var PATH
 on:
   push:
   schedule:
-    - cron: '0 0 1 * *'  # midnight every month (utc)
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
   workflow_dispatch:
 
 jobs:

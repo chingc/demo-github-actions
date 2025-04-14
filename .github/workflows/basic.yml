@@ -3,7 +3,7 @@ name: Basic
 on:
   push:
   schedule:
-    - cron: '0 0 1 * *'  # midnight every month (utc)
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
   workflow_dispatch:
 
 jobs:
@@ -16,8 +16,8 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
-          cache: 'pip'
+          python-version: 3.x
+          cache: pip
 
       - name: Show python version
         run: |

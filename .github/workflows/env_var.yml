@@ -3,21 +3,21 @@ name: Env Var
 on:
   push:
   schedule:
-    - cron: '0 0 1 * *'  # midnight every month (utc)
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
   workflow_dispatch:
 
 env:
-  JAN: 'January'
-  FEB: 'February'
-  MAR: 'March'
+  JAN: "January"
+  FEB: "February"
+  MAR: "March"
 
 jobs:
   read_one:
     runs-on: ubuntu-latest
     env:
-      RED: 'FF0000'
-      GREEN: '00FF00'
-      BLUE: '0000FF'
+      RED: "FF0000"
+      GREEN: "00FF00"
+      BLUE: "0000FF"
 
     steps:
       - name: Show months, colors, and numbers
@@ -34,9 +34,9 @@ jobs:
           echo "TWO is '${TWO}'"
           echo "THREE is '${THREE}'"
         env:
-          ONE: '1'
-          TWO: '2'
-          THREE: '3'
+          ONE: "1"
+          TWO: "2"
+          THREE: "3"
 
       - name: Show months and colors (numbers are in another scope and therefore undefined)
         run: |

@@ -3,7 +3,7 @@ name: Homebrew
 on:
   push:
   schedule:
-    - cron: '0 0 1 * *'  # midnight every month (utc)
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
   workflow_dispatch:
 
 jobs:
@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Check brew
-        run: which brew || echo 'Program not found'
+        run: which brew || echo "Program not found"
 
       - name: Check fortune
-        run: which fortune || echo 'Program not found'
+        run: which fortune || echo "Program not found"
 
       - name: Setup homebrew
         uses: Homebrew/actions/setup-homebrew@master
