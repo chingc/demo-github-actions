@@ -2,7 +2,7 @@
 
 A collection of GitHub Actions workflows demonstrating various capabilities and features.
 
-They serve as a quickstart and reference for my future self. Each workflow is described below.
+Go to the [Actions](https://github.com/chingc/tutorial-github-actions/actions) tab for workflow outputs.
 
 ## basic.yml
 
@@ -15,6 +15,8 @@ A basic workflow to do the essentials.
 - Uses [actions/setup-python](https://github.com/actions/setup-python) with pip cache
 - Installs `requirements.txt` and runs a simple test
 - Includes `dependabot.yml` to automatically check for package updates
+
+[.github/workflows/basic.yml](.github/workflows/basic.yml)
 
 ## branch_name.yml
 
@@ -31,6 +33,8 @@ You may also get an unexpected result depending on the event that triggered the 
 - Shows various `github` context properties that may or may not contain the branch name
 - Sets branch name to the top level `env` so it can be accessed by the entire workflow
 
+[.github/workflows/branch_name.yml](.github/workflows/branch_name.yml)
+
 ## context.yml
 
 Contexts are a way to access information about workflow runs, variables, runner environments, jobs, and steps.
@@ -40,6 +44,8 @@ This can be helpful for debugging workflow errors or bugs.
 > Warning: Be careful when printing the entire context as it may contain sensitive information.
 
 - Shows various contexts
+
+[.github/workflows/context.yml](.github/workflows/context.yml)
 
 ## env_var.yml
 
@@ -53,13 +59,17 @@ One quirk that can cause confusion is the fact that environment variables define
 - Write env vars
 - Pass env vars
 
+[.github/workflows/env_var.yml](.github/workflows/env_var.yml)
+
 ## github_script.yml
 
 GitHub provides an action that lets you easily write javascript directly in your workflow.
 
-The action includes an object with the current workflow context and references to several other useful packages. It's also a pre-authenticated octokit/rest.js client.
+The action also includes an object with the current workflow context, references to other useful packages, and it's a pre-authenticated octokit/rest.js client.
 
 - Uses [actions/github-script](https://github.com/actions/github-script)
+
+[.github/workflows/github_script.yml](.github/workflows/github_script.yml)
 
 ## homebrew.yml
 
@@ -69,11 +79,15 @@ This demo shows how you can leverage its power and convenience to install applic
 
 - Uses [Homebrew/actions/setup-homebrew](https://github.com/Homebrew/actions/tree/master/setup-homebrew)
 
+[.github/workflows/homebrew.yml](.github/workflows/homebrew.yml)
+
 ## system_path.yml
 
 Read, write, and modify PATH like any other environment variable. It has the same quirks.
 
 - Modify PATH env var
+
+[.github/workflows/system_path.yml](.github/workflows/system_path.yml)
 
 ## References
 
