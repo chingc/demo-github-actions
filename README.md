@@ -2,12 +2,15 @@
 
 A collection of GitHub Actions workflows demonstrating various capabilities and features.
 
-Go to the [Actions](https://github.com/chingc/tutorial-github-actions/actions) tab for workflow outputs.
-
 ## basic.yml
 
-A basic workflow to do the essentials.
+<details>
 
+<summary>A basic workflow to do the essentials.</summary>
+
+<br/>If you're unfamiliar with GitHub Actions this will help you get started quickly.
+
+[.github/workflows/basic.yml](.github/workflows/basic.yml)
 - Runs when changes are pushed
 - Runs on a schedule
 - Can be run manually from the GitHub UI
@@ -16,13 +19,17 @@ A basic workflow to do the essentials.
 - Installs `requirements.txt` and runs a simple test
 - Includes `dependabot.yml` to automatically check for package updates
 
-[.github/workflows/basic.yml](.github/workflows/basic.yml)
+</details>
 
 ## branch_name.yml
 
-Getting the branch name is a common CI operation. Surprisingly, there's no pre-defined way to get it in GitHub Actions.
+<details>
 
-This demo shows the simplest way without using 3rd party actions or invoking various tools.
+<summary>Getting the branch name.</summary>
+
+<br/>This is a common CI operation. Surprisingly, there's no pre-defined way to get it in GitHub Actions.
+
+This demo shows the simplest way without using 3rd party actions or other tools.
 
 It works in most cases, but there are some quirks.
 
@@ -30,64 +37,84 @@ For example, if your commit is tagged this method will return the tag instead of
 
 You may also get an unexpected result depending on the event that triggered the workflow. This demo is set to trigger on `pull_request` and on `push` to illustrate this behavior.
 
+[.github/workflows/branch_name.yml](.github/workflows/branch_name.yml)
 - Shows various `github` context properties that may or may not contain the branch name
 - Sets branch name to the top level `env` so it can be accessed by the entire workflow
 
-[.github/workflows/branch_name.yml](.github/workflows/branch_name.yml)
+</details>
 
 ## context.yml
 
-Contexts are a way to access information about workflow runs, variables, runner environments, jobs, and steps.
+<details>
 
-This can be helpful for debugging workflow errors or bugs.
+<summary>Accessing information about workflow runs.</summary>
 
-> Warning: Be careful when printing the entire context as it may contain sensitive information.
-
-- Shows various contexts
+<br/>This can be helpful for debugging workflow errors or bugs, but be careful as it has the potential to output sensitive information.
 
 [.github/workflows/context.yml](.github/workflows/context.yml)
+- Shows various contexts
+
+</details>
 
 ## env_var.yml
 
-Environment variables and their scopes work as you'd expect in GitHub Actions.
+<details>
+
+<summary>Working with environment variables.</summary>
+
+<br/>Environment variables and their scopes work as you'd expect in GitHub Actions.
 
 They're also fairly self-contained, so any changes you make are isolated to the job you're in.
 
 One quirk that can cause confusion is the fact that environment variables defined within a step aren't accessible until the next step.
 
+[.github/workflows/env_var.yml](.github/workflows/env_var.yml)
 - Read env vars
 - Write env vars
 - Pass env vars
 
-[.github/workflows/env_var.yml](.github/workflows/env_var.yml)
+</details>
 
 ## github_script.yml
 
-GitHub provides an action that lets you easily write javascript directly in your workflow.
+<details>
+
+<summary>Using javascript in your workflow.</summary>
+
+<br/>GitHub provides an action that lets you easily write javascript directly in your workflow.
 
 The action also includes an object with the current workflow context, references to other useful packages, and it's a pre-authenticated octokit/rest.js client.
 
+[.github/workflows/github_script.yml](.github/workflows/github_script.yml)
 - Uses [actions/github-script](https://github.com/actions/github-script)
 
-[.github/workflows/github_script.yml](.github/workflows/github_script.yml)
+</details>
 
 ## homebrew.yml
 
-If you develop on macOS you're probably familiar with [homebrew](https://brew.sh).  Did you know it's also available on Linux?
+<details>
 
-This demo shows how you can leverage its power and convenience to install applications on GitHub Actions runners.
+<summary>Using homebrew in your workflow.</summary>
 
-- Uses [Homebrew/actions/setup-homebrew](https://github.com/Homebrew/actions/tree/master/setup-homebrew)
+Leverage the convenience of homebrew to install applications on GitHub Actions runners.
 
 [.github/workflows/homebrew.yml](.github/workflows/homebrew.yml)
+- Uses [Homebrew/actions/setup-homebrew](https://github.com/Homebrew/actions/tree/master/setup-homebrew)
+
+</details>
 
 ## system_path.yml
 
-Read, write, and modify PATH like any other environment variable. It has the same quirks.
+<details>
 
-- Modify PATH env var
+<summary>Working with the PATH environment variable.</summary>
+
+<br/>Read, write, and modify PATH like any other environment variable.
 
 [.github/workflows/system_path.yml](.github/workflows/system_path.yml)
+- Modify PATH env var
+
+</details>
 
 ## References
 

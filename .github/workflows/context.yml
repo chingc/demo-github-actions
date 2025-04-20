@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: GitHub context
+        run: echo "${{ toJson(github) }}"
+
       - name: Env context
         run: echo "${{ toJson(env) }}"
         env:
