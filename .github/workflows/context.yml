@@ -6,6 +6,9 @@ on:
     - cron: "0 0 1 * *" # Midnight every month (UTC)
   workflow_dispatch:
 
+env:
+  GREETING: "Hello, World!"
+
 jobs:
   run:
     name: Run
@@ -13,15 +16,21 @@ jobs:
 
     steps:
       - name: GitHub context
-        run: echo "${{ toJson(github) }}"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "${GITHUB_CONTEXT}"
 
       - name: Env context
-        run: echo "${{ toJson(env) }}"
         env:
-          GREETING: "Hello, World!"
+          ENV_CONTEXT: ${{ toJson(env) }}
+        run: echo "${ENV_CONTEXT}"
 
       - name: Job context
-        run: echo "${{ toJson(job) }}"
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "${JOB_CONTEXT}"
 
       - name: Runner context
-        run: echo "${{ toJson(runner) }}"
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "${RUNNER_CONTEXT}"
