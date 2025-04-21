@@ -96,7 +96,7 @@ The action also includes an object with the current workflow context, references
 
 <summary>Using homebrew in your workflow.</summary>
 
-Leverage the convenience of homebrew to install applications on GitHub Actions runners.
+<br/>Leverage the convenience of homebrew to install applications on GitHub Actions runners.
 
 [.github/workflows/homebrew.yml](.github/workflows/homebrew.yml)
 - Uses [Homebrew/actions/setup-homebrew](https://github.com/Homebrew/actions/tree/master/setup-homebrew)
