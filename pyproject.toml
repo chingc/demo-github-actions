@@ -1,2 +1,14 @@
+[project]
+name = "tutorial-github-actions"
+version = "0.1.0"
+description = "A quickstart and reference for GitHub Actions to help you get up and running fast."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.13"
+dependencies = [
+    "pytest==8.3.5",
+]
+
 [tool.pytest.ini_options]
 addopts = "--color=yes"
