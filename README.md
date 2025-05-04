@@ -6,11 +6,11 @@ A collection of GitHub Actions workflows demonstrating various capabilities and 
 
 <details>
 
-<summary>A basic workflow to do the essentials.</summary>
+<summary>A basic workflow to do the essentials for a Python project.</summary>
 
 <br/>If you're unfamiliar with GitHub Actions this will help you get started quickly.
 
-[.github/workflows/basic.yml](.github/workflows/basic.yml)
+[basic.yml](.github/workflows/basic.yml)
 - Runs when changes are pushed
 - Runs on a schedule
 - Can be run manually from the GitHub UI
@@ -18,6 +18,18 @@ A collection of GitHub Actions workflows demonstrating various capabilities and 
 - Uses [actions/setup-python](https://github.com/actions/setup-python) with pip cache
 - Installs `requirements.txt` and runs a simple test
 - Includes `dependabot.yml` to automatically check for package updates
+
+</details>
+
+## basic_uv.yml
+
+<details>
+
+<summary>Same as basic.yml but uses the uv project manager.</summary>
+
+<br/>
+
+[basic_uv.yml](.github/workflows/basic_uv.yml)
 
 </details>
 
@@ -37,7 +49,7 @@ For example, if your commit is tagged this method will return the tag instead of
 
 You may also get an unexpected result depending on the event that triggered the workflow. This demo is set to trigger on `pull_request` and on `push` to illustrate this behavior.
 
-[.github/workflows/branch_name.yml](.github/workflows/branch_name.yml)
+[branch_name.yml](.github/workflows/branch_name.yml)
 - Shows various `github` context properties that may or may not contain the branch name
 - Sets branch name to the top level `env` so it can be accessed by the entire workflow
 
@@ -51,7 +63,7 @@ You may also get an unexpected result depending on the event that triggered the 
 
 <br/>This can be helpful for debugging workflow errors or bugs, but be careful as it has the potential to output sensitive information.
 
-[.github/workflows/context.yml](.github/workflows/context.yml)
+[context.yml](.github/workflows/context.yml)
 - Shows various contexts
 
 </details>
@@ -68,7 +80,7 @@ They're also fairly self-contained, so any changes you make are isolated to the 
 
 One quirk that can cause confusion is the fact that environment variables defined within a step aren't accessible until the next step.
 
-[.github/workflows/env_var.yml](.github/workflows/env_var.yml)
+[env_var.yml](.github/workflows/env_var.yml)
 - Read env vars
 - Write env vars
 - Pass env vars
@@ -85,7 +97,7 @@ One quirk that can cause confusion is the fact that environment variables define
 
 The action also includes an object with the current workflow context, references to other useful packages, and it's a pre-authenticated octokit/rest.js client.
 
-[.github/workflows/github_script.yml](.github/workflows/github_script.yml)
+[github_script.yml](.github/workflows/github_script.yml)
 - Uses [actions/github-script](https://github.com/actions/github-script)
 
 </details>
@@ -98,7 +110,7 @@ The action also includes an object with the current workflow context, references
 
 <br/>Leverage the convenience of homebrew to install applications on GitHub Actions runners.
 
-[.github/workflows/homebrew.yml](.github/workflows/homebrew.yml)
+[homebrew.yml](.github/workflows/homebrew.yml)
 - Uses [Homebrew/actions/setup-homebrew](https://github.com/Homebrew/actions/tree/master/setup-homebrew)
 
 </details>
@@ -111,7 +123,7 @@ The action also includes an object with the current workflow context, references
 
 <br/>Read, write, and modify PATH like any other environment variable.
 
-[.github/workflows/system_path.yml](.github/workflows/system_path.yml)
+[system_path.yml](.github/workflows/system_path.yml)
 - Modify PATH env var
 
 </details>
@@ -119,7 +131,6 @@ The action also includes an object with the current workflow context, references
 ## References
 
 - [GitHub Docs: GitHub Actions](https://docs.github.com/en/actions)
-<br/><br/>
 - [GitHub Docs: Accessing contextual information about workflow runs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/contexts)
 - [GitHub Docs: Adding a system path](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-system-path)
 - [GitHub Docs: Configuration options for the dependabot.yml file](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file)
