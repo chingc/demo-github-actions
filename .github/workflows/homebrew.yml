@@ -21,7 +21,7 @@ jobs:
       - name: Setup homebrew
         uses: Homebrew/actions/setup-homebrew@master
 
-      - name: Setup fortune
+      - name: Install fortune
         run: brew install fortune
 
       - name: Run fortune
