@@ -1,0 +1,33 @@
+name: "Basic (uv)"
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Setup python
+        run: |
+          uv python install
+          uv run -- python -V
+
+      - name: Install python dependencies
+        run: |
+          uv sync --locked
+          uv tree
+
+      - name: Run test
+        run: uv run -- pytest basic.py
