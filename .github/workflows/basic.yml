@@ -22,8 +22,8 @@ jobs:
 
       - name: Show python version
         run: |
-          python -V
-          pip -V
+          python --version
+          pip --version
 
       - name: Install python dependencies
         run: |

@@ -22,7 +22,7 @@ jobs:
       - name: Setup python
         run: |
           uv python install
-          uv run -- python -V
+          uv run -- python --version
 
       - name: Install python dependencies
         run: |
