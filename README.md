@@ -115,6 +115,19 @@ The action also includes an object with the current workflow context, references
 
 </details>
 
+## mise.yml
+
+<details>
+
+<summary>Using mise in your workflow.</summary>
+
+<br/>The polyglot tool version manager.
+
+[mise.yml](.github/workflows/mise.yml)
+- Uses [jdx/mise-action](https://github.com/jdx/mise-action)
+
+</details>
+
 ## system_path.yml
 
 <details>

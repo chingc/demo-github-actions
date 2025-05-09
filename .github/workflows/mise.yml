@@ -1,0 +1,30 @@
+name: Mise
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: jdx/mise-action@v2
+        with:
+          cache: true
+          mise_toml: |
+            [tools]
+            go = "latest"
+            node = "latest"
+            python = "latest"
+            zig = "latest"
+
+      - name: Check version
+        run: |
+          go version
+          echo "node $(node --version)"
+          python --version
+          echo "zig $(zig version)"
