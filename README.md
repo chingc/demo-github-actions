@@ -1,6 +1,6 @@
 # GitHub Actions
 
-A collection of GitHub Actions workflows demonstrating various capabilities and features.
+A collection of small GitHub Actions workflows demonstrating various capabilities and features to get you started.
 
 ## basic.yml
 
@@ -10,14 +10,15 @@ A collection of GitHub Actions workflows demonstrating various capabilities and 
 
 <br/>If you're unfamiliar with GitHub Actions this will help you get started quickly.
 
-[basic.yml](.github/workflows/basic.yml)
 - Runs when changes are pushed
 - Runs on a schedule
 - Can be run manually from the GitHub UI
-- Uses [actions/checkout](https://github.com/actions/checkout)
-- Uses [actions/setup-python](https://github.com/actions/setup-python) with pip cache
+- Uses `actions/checkout`
+- Uses `actions/setup-python` with pip cache
 - Installs `requirements.txt` and runs a simple test
 - Includes `dependabot.yml` to automatically check for package updates
+
+See the [workflow](.github/workflows/basic.yml).
 
 </details>
 
@@ -29,7 +30,7 @@ A collection of GitHub Actions workflows demonstrating various capabilities and 
 
 <br/>
 
-[basic_uv.yml](.github/workflows/basic_uv.yml)
+See the [workflow](.github/workflows/basic_uv.yml).
 
 </details>
 
@@ -49,9 +50,10 @@ For example, if your commit is tagged this method will return the tag instead of
 
 You may also get an unexpected result depending on the event that triggered the workflow. This demo is set to trigger on `pull_request` and on `push` to illustrate this behavior.
 
-[branch_name.yml](.github/workflows/branch_name.yml)
 - Shows various `github` context properties that may or may not contain the branch name
 - Sets branch name to the top level `env` so it can be accessed by the entire workflow
+
+See the [workflow](.github/workflows/branch_name.yml).
 
 </details>
 
@@ -63,8 +65,9 @@ You may also get an unexpected result depending on the event that triggered the 
 
 <br/>You can cache files, directories, or a combination of them. If you want to test for a cache hit, keep in mind that it only occurs if it matches the primary cache `key`. A partial match on `restore-keys` is still considered a cache miss.
 
-[cache.yml](.github/workflows/cache.yml)
-- Uses [actions/cache](https://github.com/actions/cache)
+- Uses `actions/cache`
+
+See the [workflow](.github/workflows/cache.yml).
 
 </details>
 
@@ -76,8 +79,9 @@ You may also get an unexpected result depending on the event that triggered the 
 
 <br/>This can be helpful for debugging workflow errors or bugs, but be careful as it has the potential to output sensitive information.
 
-[context.yml](.github/workflows/context.yml)
 - Shows various contexts
+
+See the [workflow](.github/workflows/context.yml).
 
 </details>
 
@@ -93,10 +97,11 @@ They're also fairly self-contained, so any changes you make are isolated to the 
 
 One quirk that can cause confusion is the fact that environment variables defined within a step aren't accessible until the next step.
 
-[env_var.yml](.github/workflows/env_var.yml)
 - Read env vars
 - Write env vars
 - Pass env vars
+
+See the [workflow](.github/workflows/env_var.yml).
 
 </details>
 
@@ -110,8 +115,9 @@ One quirk that can cause confusion is the fact that environment variables define
 
 The action also includes an object with the current workflow context, references to other useful packages, and it's a pre-authenticated octokit/rest.js client.
 
-[github_script.yml](.github/workflows/github_script.yml)
-- Uses [actions/github-script](https://github.com/actions/github-script)
+- Uses `actions/github-script`
+
+See the [workflow](.github/workflows/github_script.yml).
 
 </details>
 
@@ -123,8 +129,9 @@ The action also includes an object with the current workflow context, references
 
 <br/>Leverage the convenience of homebrew to install applications on GitHub Actions runners.
 
-[homebrew.yml](.github/workflows/homebrew.yml)
-- Uses [Homebrew/actions/setup-homebrew](https://github.com/Homebrew/actions/tree/master/setup-homebrew)
+- Uses `Homebrew/actions/setup-homebrew`
+
+See the [workflow](.github/workflows/homebrew.yml).
 
 </details>
 
@@ -136,8 +143,9 @@ The action also includes an object with the current workflow context, references
 
 <br/>The polyglot tool version manager.
 
-[mise.yml](.github/workflows/mise.yml)
-- Uses [jdx/mise-action](https://github.com/jdx/mise-action)
+- Uses `jdx/mise-action`
+
+See the [workflow](.github/workflows/mise.yml).
 
 </details>
 
@@ -149,8 +157,9 @@ The action also includes an object with the current workflow context, references
 
 <br/>Read, write, and modify PATH like any other environment variable.
 
-[system_path.yml](.github/workflows/system_path.yml)
 - Modify PATH env var
+
+See the [workflow](.github/workflows/system_path.yml).
 
 </details>
 
@@ -164,6 +173,13 @@ The action also includes an object with the current workflow context, references
 - [GitHub Actions: jobs.<job_id>.outputs](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idoutputs)
 - [GitHub Actions: Setting an environment variable](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-environment-variable)
 - [GitHub Actions: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
+<br/><br/>
+- [actions/cache](https://github.com/actions/cache)
+- [actions/checkout](https://github.com/actions/checkout)
+- [actions/github-script](https://github.com/actions/github-script)
+- [actions/setup-python](https://github.com/actions/setup-python)
+- [Homebrew/actions/setup-homebrew](https://github.com/Homebrew/actions/tree/master/setup-homebrew)
+- [jdx/mise-action](https://github.com/jdx/mise-action)
 <br/><br/>
 - [GitHub Docs: Dependabot options reference](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference)
 <br/><br/>
