@@ -85,7 +85,7 @@ See the [workflow](.github/workflows/context.yml).
 
 </details>
 
-## env_var.yml
+## env_var_*.yml
 
 <details>
 
@@ -97,11 +97,11 @@ They're also fairly self-contained, so any changes you make are isolated to the 
 
 One quirk that can cause confusion is the fact that environment variables defined within a step aren't accessible until the next step.
 
-- Read env vars
-- Write env vars
-- Pass env vars
-
-See the [workflow](.github/workflows/env_var.yml).
+See the workflows:
+- [Reading](.github/workflows/env_var_read.yml)
+- [Writing](.github/workflows/env_var_write.yml)
+- [Passing](.github/workflows/env_var_pass.yml)
+- [System PATH](.github/workflows/env_var_path.yml)
 
 </details>
 
@@ -146,20 +146,6 @@ See the [workflow](.github/workflows/homebrew.yml).
 - Uses `jdx/mise-action`
 
 See the [workflow](.github/workflows/mise.yml).
-
-</details>
-
-## system_path.yml
-
-<details>
-
-<summary>Working with the PATH environment variable.</summary>
-
-<br/>Read, write, and modify PATH like any other environment variable.
-
-- Modify PATH env var
-
-See the [workflow](.github/workflows/system_path.yml).
 
 </details>
 
