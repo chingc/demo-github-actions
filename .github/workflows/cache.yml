@@ -1,0 +1,39 @@
+name: Cache
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cache dates
+        uses: actions/cache@v4
+        with:
+          path: dates.txt
+          key: dates-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            dates-${{ github.run_id }}-
+            dates-
+
+      - name: Show dates.txt
+        run: |
+          if [[ -f "dates.txt" ]]; then
+            cat dates.txt
+          else
+            touch dates.txt
+          fi
+
+      - name: Add today to top of dates.txt
+        run: |
+          date -u "+%Y-%m-%d %H:%M:%S UTC" > today.txt
+          cat today.txt dates.txt | head -n 5 > new_dates.txt
+          cp new_dates.txt dates.txt
+
+      - name: Show updated dates.txt
+        run: cat dates.txt
