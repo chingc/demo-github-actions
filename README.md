@@ -135,6 +135,22 @@ See the [workflow](.github/workflows/homebrew.yml).
 
 </details>
 
+## job_summary.yml
+
+<details>
+
+<summary>Custom output for the summary page of a workflow run.</summary>
+
+<br/>You can set custom Markdown for each job so it will be displayed on the summary page of a workflow run. Job summaries support GitHub flavored Markdown, and you can add your Markdown content for a step to the `GITHUB_STEP_SUMMARY` environment file.
+
+When a job finishes, the summaries for all steps in a job are grouped together into a single job summary and are shown on the workflow run summary page. If multiple jobs generate summaries, the job summaries are ordered by job completion time.
+
+Job summaries are isolated between steps and each step is restricted to a maximum size of 1MB. A maximum of 20 job summaries from steps are displayed per job.
+
+See the [workflow](.github/workflows/job_summary.yml).
+
+</details>
+
 ## mise.yml
 
 <details>
@@ -153,6 +169,7 @@ See the [workflow](.github/workflows/mise.yml).
 
 - [GitHub Actions](https://docs.github.com/en/actions)
 - [GitHub Actions: Accessing contextual information about workflow runs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/contexts)
+- [GitHub Actions: Adding a job summary](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-job-summary)
 - [GitHub Actions: Adding a system path](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-system-path)
 - [GitHub Actions: Caching dependencies to speed up workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows)
 - [GitHub Actions: Events that trigger workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows)
