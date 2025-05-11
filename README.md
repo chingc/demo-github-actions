@@ -75,11 +75,9 @@ See the [workflow](.github/workflows/cache.yml).
 
 <details>
 
-<summary>Accessing information about workflow runs.</summary>
+<summary>Accessing context information about workflow runs.</summary>
 
-<br/>This can be helpful for debugging workflow errors or bugs, but be careful as it has the potential to output sensitive information.
-
-- Shows various contexts
+<br/>You can access various contexts about the workflow run, which can be helpful for debugging workflow errors or bugs. Be careful as it has the potential to output sensitive information.
 
 See the [workflow](.github/workflows/context.yml).
 
