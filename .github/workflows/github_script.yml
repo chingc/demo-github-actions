@@ -16,7 +16,7 @@ jobs:
         uses: actions/github-script@v7
         id: return-result
         with:
-          result-encoding: string # choices: string, json (defaults to json if omitted)
+          result-encoding: string # Choices: string, json (Default: json)
           script: return "Hello, World!"
 
       - name: Get string

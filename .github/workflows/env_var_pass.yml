@@ -41,10 +41,10 @@ jobs:
       - name: Set output parameters to pass values to another job
         id: pass
         run: |
-          # single-line output
+          # Single-line using echo
           echo "GREETING=Hello, World!" >> "${GITHUB_OUTPUT}"
 
-          # multi-line output
+          # Multi-line using heredoc
           {
             echo 'RESPONSE<<EOF'
             curl https://example.com
