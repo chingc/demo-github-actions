@@ -107,11 +107,9 @@ See the workflows:
 
 <details>
 
-<summary>Using javascript in your workflow.</summary>
+<summary>Scripting in workflows.</summary>
 
-<br/>GitHub provides an action that lets you easily write javascript directly in your workflow.
-
-The action also includes an object with the current workflow context, references to other useful packages, and it's a pre-authenticated octokit/rest.js client.
+<br/>Easily and quickly write JavaScript in your workflow that uses the GitHub API and the workflow run context. The action includes a pre-authenticated octokit/rest.js client and references to many other useful packages.
 
 - Uses `actions/github-script`
 
