@@ -1,0 +1,66 @@
+name: Env Var Pass
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
+  workflow_dispatch:
+
+jobs:
+  job1:
+    name: Example 1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set environment variable (takes effect in subsequent steps)
+        run: |
+          echo "FOO=abc" >> "${GITHUB_ENV}"
+          echo "BAR=123" >> "${GITHUB_ENV}"
+          echo "No effect in the current step."
+          echo "FOO is '${FOO}'"
+          echo "BAR is '${BAR}'"
+
+      - name: Show values
+        run: |
+          echo "FOO is '${FOO}'"
+          echo "BAR is '${BAR}'"
+
+  job2:
+    name: Example 2
+    runs-on: ubuntu-latest
+    outputs:
+      GREETING: "${{ steps.pass.outputs.GREETING }}"
+      RESPONSE: "${{ steps.pass.outputs.RESPONSE }}"
+
+    steps:
+      - name: FOO and BAR are in another scope and therefore undefined
+        run: |
+          echo "FOO is '${FOO}'"
+          echo "BAR is '${BAR}'"
+
+      - name: Set output parameters to pass values to another job
+        id: pass
+        run: |
+          # single-line output
+          echo "GREETING=Hello, World!" >> "${GITHUB_OUTPUT}"
+
+          # multi-line output
+          {
+            echo 'RESPONSE<<EOF'
+            curl https://example.com
+            echo EOF
+          } >> "${GITHUB_OUTPUT}"
+
+  job3:
+    name: Example 3
+    runs-on: ubuntu-latest
+    needs: job2
+
+    steps:
+      - name: Show GREETING
+        run: echo "GREETING is '${{ needs.job2.outputs.GREETING }}'"
+
+      - name: Show RESPONSE
+        run: |
+          echo "RESPONSE is"
+          echo '${{ needs.job2.outputs.RESPONSE }}'

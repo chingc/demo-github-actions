@@ -1,0 +1,56 @@
+name: Job summary
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
+  workflow_dispatch:
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Custom job summary
+        run: |
+          # Single-line using echo
+          echo '# A first-level heading' >> "${GITHUB_STEP_SUMMARY}"
+          echo '## A second-level heading' >> "${GITHUB_STEP_SUMMARY}"
+          echo '### A third-level heading' >> "${GITHUB_STEP_SUMMARY}"
+
+          # Multi-line using heredoc
+          cat << 'EOF' >> "${GITHUB_STEP_SUMMARY}"
+          **Bold**
+          *Italic*
+          ~Strikethru~
+          Subscript<sub>abc</sub>
+          Superscript<sup>xyz</sup>
+          <ins>Underline</ins>
+
+          List
+          - Item 1
+          - Item 2
+          - Item 3
+
+          :grinning: :thumbsup: :rocket: :green_circle: :red_circle:
+
+          > Block quote
+
+          > [!NOTE]
+          > Useful information.
+
+          > [!TIP]
+          > Helpful advice.
+
+          > [!IMPORTANT]
+          > Key information.
+
+          > [!WARNING]
+          > Urgent info.
+
+          > [!CAUTION]
+          > Be careful.
+
+          [GitHub](https://github.com)
+          EOF

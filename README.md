@@ -75,17 +75,15 @@ See the [workflow](.github/workflows/cache.yml).
 
 <details>
 
-<summary>Accessing information about workflow runs.</summary>
+<summary>Accessing context information about workflow runs.</summary>
 
-<br/>This can be helpful for debugging workflow errors or bugs, but be careful as it has the potential to output sensitive information.
-
-- Shows various contexts
+<br/>You can access various contexts about the workflow run, which can be helpful for debugging workflow errors or bugs. Be careful as it has the potential to output sensitive information.
 
 See the [workflow](.github/workflows/context.yml).
 
 </details>
 
-## env_var.yml
+## env_var_*.yml
 
 <details>
 
@@ -97,11 +95,11 @@ They're also fairly self-contained, so any changes you make are isolated to the 
 
 One quirk that can cause confusion is the fact that environment variables defined within a step aren't accessible until the next step.
 
-- Read env vars
-- Write env vars
-- Pass env vars
-
-See the [workflow](.github/workflows/env_var.yml).
+See the workflows:
+- [Reading](.github/workflows/env_var_read.yml)
+- [Writing](.github/workflows/env_var_write.yml)
+- [Passing](.github/workflows/env_var_pass.yml)
+- [System PATH](.github/workflows/env_var_path.yml)
 
 </details>
 
@@ -109,11 +107,9 @@ See the [workflow](.github/workflows/env_var.yml).
 
 <details>
 
-<summary>Using javascript in your workflow.</summary>
+<summary>Scripting in workflows.</summary>
 
-<br/>GitHub provides an action that lets you easily write javascript directly in your workflow.
-
-The action also includes an object with the current workflow context, references to other useful packages, and it's a pre-authenticated octokit/rest.js client.
+<br/>Easily and quickly write JavaScript in your workflow that uses the GitHub API and the workflow run context. The action includes a pre-authenticated octokit/rest.js client and references to many other useful packages.
 
 - Uses `actions/github-script`
 
@@ -135,6 +131,22 @@ See the [workflow](.github/workflows/homebrew.yml).
 
 </details>
 
+## job_summary.yml
+
+<details>
+
+<summary>Custom output for the summary page of a workflow run.</summary>
+
+<br/>You can set custom Markdown for each job so it will be displayed on the summary page of a workflow run. Job summaries support GitHub flavored Markdown, and you can add your Markdown content for a step to the `GITHUB_STEP_SUMMARY` environment file.
+
+When a job finishes, the summaries for all steps in a job are grouped together into a single job summary and are shown on the workflow run summary page. If multiple jobs generate summaries, the job summaries are ordered by job completion time.
+
+Job summaries are isolated between steps and each step is restricted to a maximum size of 1MB. A maximum of 20 job summaries from steps are displayed per job.
+
+See the [workflow](.github/workflows/job_summary.yml).
+
+</details>
+
 ## mise.yml
 
 <details>
@@ -149,24 +161,11 @@ See the [workflow](.github/workflows/mise.yml).
 
 </details>
 
-## system_path.yml
-
-<details>
-
-<summary>Working with the PATH environment variable.</summary>
-
-<br/>Read, write, and modify PATH like any other environment variable.
-
-- Modify PATH env var
-
-See the [workflow](.github/workflows/system_path.yml).
-
-</details>
-
 ## References
 
 - [GitHub Actions](https://docs.github.com/en/actions)
 - [GitHub Actions: Accessing contextual information about workflow runs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/contexts)
+- [GitHub Actions: Adding a job summary](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-job-summary)
 - [GitHub Actions: Adding a system path](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-system-path)
 - [GitHub Actions: Caching dependencies to speed up workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows)
 - [GitHub Actions: Events that trigger workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows)
