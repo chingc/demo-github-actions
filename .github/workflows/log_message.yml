@@ -1,0 +1,19 @@
+name: Log Message
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
+  workflow_dispatch:
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Single-line using echo
+        run: |
+          echo '# A first-level heading' >> "${GITHUB_STEP_SUMMARY}"
+          echo '## A second-level heading' >> "${GITHUB_STEP_SUMMARY}"
+          echo '### A third-level heading' >> "${GITHUB_STEP_SUMMARY}"
