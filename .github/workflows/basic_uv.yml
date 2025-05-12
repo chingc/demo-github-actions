@@ -30,4 +30,4 @@ jobs:
           uv tree
 
       - name: Run test
-        run: uv run -- pytest basic.py
+        run: uv run -- pytest

@@ -12,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Custom job summary
+      - name: Single-line using echo
         run: |
-          # Single-line using echo
           echo '# A first-level heading' >> "${GITHUB_STEP_SUMMARY}"
           echo '## A second-level heading' >> "${GITHUB_STEP_SUMMARY}"
           echo '### A third-level heading' >> "${GITHUB_STEP_SUMMARY}"
 
-          # Multi-line using heredoc
+      - name: Multi-line using heredoc
+        run: |
           cat << 'EOF' >> "${GITHUB_STEP_SUMMARY}"
           **Bold**
           *Italic*
