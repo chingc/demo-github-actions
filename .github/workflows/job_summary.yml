@@ -1,4 +1,4 @@
-name: Job summary
+name: Job Summary
 
 on:
   push:
