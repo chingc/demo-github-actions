@@ -18,8 +18,7 @@ jobs:
       - name: Check fortune
         run: which fortune || echo "Program not found"
 
-      - name: Setup homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+      - uses: Homebrew/actions/setup-homebrew@master
 
       - name: Install fortune
         run: brew install fortune
