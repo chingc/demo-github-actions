@@ -1,0 +1,37 @@
+name: Log Annotation
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
+  workflow_dispatch:
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notice
+        run: echo '::notice ::Look at this.'
+
+      - name: Warning
+        run: echo '::warning ::Heed this warning.'
+
+      - name: Error
+        run: echo '::error ::Error here.'
+
+      - name: Notice using github-script
+        uses: actions/github-script@v7
+        with:
+          script: core.notice("Notice me!");
+
+      - name: Warning using github-script
+        uses: actions/github-script@v7
+        with:
+          script: core.warning("Uh oh.");
+
+      - name: Error using github-script
+        uses: actions/github-script@v7
+        with:
+          script: core.error("Another error?!");

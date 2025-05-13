@@ -147,6 +147,18 @@ See the [workflow](.github/workflows/job_summary.yml).
 
 </details>
 
+## log_annotation.yml
+
+<details>
+
+<summary>Create annotations in workflow logs.</summary>
+
+<br/>You can create `notice`, `warning`, and `error` annotations in your workflow logs. Optionally, they can be associated with a file and even a position within the file. Annotations also show up on the job summary page.
+
+See the [workflow](.github/workflows/log_annotation.yml).
+
+</details>
+
 ## mise.yml
 
 <details>
@@ -166,6 +178,7 @@ See the [workflow](.github/workflows/mise.yml).
 - [GitHub Actions](https://docs.github.com/en/actions)
 - [GitHub Actions: Accessing contextual information about workflow runs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/contexts)
 - [GitHub Actions: Adding a job summary](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-job-summary)
+- [GitHub Actions: Adding a log annotation](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-a-notice-message)
 - [GitHub Actions: Adding a system path](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-system-path)
 - [GitHub Actions: Caching dependencies to speed up workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows)
 - [GitHub Actions: Events that trigger workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows)
