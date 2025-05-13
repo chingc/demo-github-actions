@@ -18,14 +18,10 @@ jobs:
         with:
           enable-cache: true
 
-      - name: Setup python
-        run: |
-          uv python install
-          uv run -- python --version
-
       - name: Install python dependencies
         run: |
-          uv sync --locked
+          uv python install; echo
+          uv sync --locked; echo
           uv tree
 
       - name: Run test
