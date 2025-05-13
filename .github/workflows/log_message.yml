@@ -13,5 +13,10 @@ jobs:
 
     steps:
       - name: Notice message
-        run: |
-          echo "::notice ::Missing semicolon"
+        run: echo '::notice ::Notice me!'
+
+      - name: Warning message
+        run: echo '::warning ::Heed this warning.'
+
+      - name: Error message
+        run: echo '::error ::Error here.'
