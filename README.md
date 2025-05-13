@@ -147,6 +147,18 @@ See the [workflow](.github/workflows/job_summary.yml).
 
 </details>
 
+## log_annotation.yml
+
+<details>
+
+<summary>Create annotations in workflow logs.</summary>
+
+<br/>You can create `notice`, `warning`, and `error` annotations in your workflow logs. Optionally, they can be associated with a file and even a position within the file. Annotations also show up on the job summary page.
+
+See the [workflow](.github/workflows/log_annotation.yml).
+
+</details>
+
 ## mise.yml
 
 <details>
