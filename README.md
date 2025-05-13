@@ -159,6 +159,20 @@ See the [workflow](.github/workflows/log_annotation.yml).
 
 </details>
 
+## matrix.yml
+
+<details>
+
+<summary>Define a matrix of different job configurations.</summary>
+
+<br/>The matrix strategy lets easily target multiple operating systems or test multiple versions of a language.
+
+- Uses `actions/setup-node`
+
+See the [workflow](.github/workflows/matrix.yml).
+
+</details>
+
 ## mise.yml
 
 <details>
@@ -183,12 +197,14 @@ See the [workflow](.github/workflows/mise.yml).
 - [GitHub Actions: Caching dependencies to speed up workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows)
 - [GitHub Actions: Events that trigger workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows)
 - [GitHub Actions: jobs.<job_id>.outputs](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idoutputs)
+- [GitHub Actions: jobs.<job_id>.strategy.matrix](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix)
 - [GitHub Actions: Setting an environment variable](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-environment-variable)
 - [GitHub Actions: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
 <br/><br/>
 - [actions/cache](https://github.com/actions/cache)
 - [actions/checkout](https://github.com/actions/checkout)
 - [actions/github-script](https://github.com/actions/github-script)
+- [actions/setup-node](https://github.com/actions/setup-node)
 - [actions/setup-python](https://github.com/actions/setup-python)
 - [Homebrew/actions/setup-homebrew](https://github.com/Homebrew/actions/tree/master/setup-homebrew)
 - [jdx/mise-action](https://github.com/jdx/mise-action)

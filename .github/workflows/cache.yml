@@ -12,8 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Cache dates
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
           path: dates.txt
           key: dates-${{ github.run_id }}-${{ github.run_attempt }}
@@ -26,6 +25,7 @@ jobs:
           if [[ -f "dates.txt" ]]; then
             cat dates.txt
           else
+            echo "Initial run. File not found. Creating..."
             touch dates.txt
           fi
 

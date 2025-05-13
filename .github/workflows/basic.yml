@@ -14,8 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version-file: .python-version
           cache: pip
@@ -31,4 +30,4 @@ jobs:
           pip install --requirement requirements.txt
 
       - name: Run test
-        run: pytest
+        run: pytest tests/test_basic.py
