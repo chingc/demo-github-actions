@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Single-line using echo
+      - name: Notice message
         run: |
-          echo '# A first-level heading' >> "${GITHUB_STEP_SUMMARY}"
-          echo '## A second-level heading' >> "${GITHUB_STEP_SUMMARY}"
-          echo '### A third-level heading' >> "${GITHUB_STEP_SUMMARY}"
+          echo "::notice ::Missing semicolon"
