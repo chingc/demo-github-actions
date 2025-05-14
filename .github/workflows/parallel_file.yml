@@ -1,0 +1,80 @@
+name: Parallel (file)
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
+  workflow_dispatch:
+
+jobs:
+  collect:
+    name: Collect
+    runs-on: ubuntu-latest
+    outputs:
+      groups: "${{ steps.build.outputs.TEST_GROUPS }}"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install python dependencies
+        run: |
+          uv python install; echo
+          uv sync --locked; echo
+          uv tree
+
+      - name: Collect tests
+        run: |
+          uv run -- pytest --collect-only --quiet | tee collected.tmp
+          echo '::group::Delete the last two lines'
+          sed -e '$d' collected.tmp | sed -e '$d' | tee collected.txt
+          echo '::endgroup::'
+
+      - name: Build test matrix
+        id: build
+        shell: uv run -- python {0}
+        run: |
+          from os import environ
+
+          # Deduplicate file paths. The same file will show up
+          # multiple times because each file can have many tests.
+          with open("collected.txt", encoding="utf-8") as lines:
+            paths = sorted({line.strip().partition("::")[0] for line in lines})
+
+          max_size = 3
+          test_groups = {"include": []}
+
+          # Slice the list of paths into subgroups.
+          for i, j in enumerate(range(0, len(paths), max_size), start=1):
+            test_groups["include"].append({"name": f"Group {i}", "files": " ".join(paths[j : j + max_size])})
+
+          print(f"::notice ::Groups: {test_groups}")
+          with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+            print(f"TEST_GROUPS={test_groups}", file=f)
+
+  test:
+    name: Test ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    needs: collect
+
+    strategy:
+      matrix: ${{ fromJSON(needs.collect.outputs.groups) }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install python dependencies
+        run: |
+          uv python install; echo
+          uv sync --locked; echo
+          uv tree
+
+      - name: Run test
+        run: uv run -- pytest '${{ matrix.files }}'
