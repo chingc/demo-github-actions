@@ -25,20 +25,20 @@ jobs:
 
       - name: Overwrite months (takes effect in subsequent steps)
         run: |
-          echo "JAN=01" >> "${GITHUB_ENV}"
-          echo "FEB=02" >> "${GITHUB_ENV}"
-          echo "MAR=03" >> "${GITHUB_ENV}"
-          echo "No effect in the current step."
+          echo 'JAN=01' >> "${GITHUB_ENV}"
+          echo 'FEB=02' >> "${GITHUB_ENV}"
+          echo 'MAR=03' >> "${GITHUB_ENV}"
+          echo 'No effect in the current step.'
           echo "JAN is '${JAN}'"
           echo "FEB is '${FEB}'"
           echo "MAR is '${MAR}'"
 
       - name: New months (takes effect in subsequent steps)
         run: |
-          echo "APR=04" >> "${GITHUB_ENV}"
-          echo "MAY=05" >> "${GITHUB_ENV}"
-          echo "JUN=06" >> "${GITHUB_ENV}"
-          echo "No effect in the current step."
+          echo 'APR=04' >> "${GITHUB_ENV}"
+          echo 'MAY=05' >> "${GITHUB_ENV}"
+          echo 'JUN=06' >> "${GITHUB_ENV}"
+          echo 'No effect in the current step.'
           echo "APR is '${APR}'"
           echo "MAY is '${MAY}'"
           echo "JUN is '${JUN}'"

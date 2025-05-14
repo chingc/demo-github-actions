@@ -20,7 +20,7 @@ jobs:
           script: return "Hello, World!"
 
       - name: Get string
-        run: echo "${{ steps.return-result.outputs.result }}"
+        run: echo '${{ steps.return-result.outputs.result }}'
 
       - name: Show the first 10 fibonacci numbers
         uses: actions/github-script@v7

@@ -18,7 +18,7 @@ jobs:
       - name: Add PATH (takes effect in subsequent steps)
         run: |
           echo "${HOME}/imaginary" >> "${GITHUB_PATH}"
-          echo "No effect in the current step."
+          echo 'No effect in the current step.'
           echo "PATH is '${PATH}'"
 
       - name: Show updated PATH
