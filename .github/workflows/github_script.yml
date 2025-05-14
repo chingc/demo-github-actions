@@ -13,8 +13,8 @@ jobs:
 
     steps:
       - name: Return string
-        uses: actions/github-script@v7
         id: return-result
+        uses: actions/github-script@v7
         with:
           result-encoding: string # Choices: string, json (Default: json)
           script: return "Hello, World!"
