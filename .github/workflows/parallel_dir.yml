@@ -1,4 +1,4 @@
-name: Parallel (dirs)
+name: Parallel (dir)
 
 on:
   push:
