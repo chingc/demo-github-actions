@@ -55,8 +55,7 @@ jobs:
     needs: collect
 
     strategy:
-      matrix:
-        test_dirs: ${{ fromJSON(needs.collect.outputs.TEST_DIRS) }}
+      matrix: ${{ fromJSON(needs.collect.outputs.TEST_DIRS) }}
         # test_dir: ["tests", "tests/dir1", "tests/dir2", "tests/dir3"]
 
     steps:
