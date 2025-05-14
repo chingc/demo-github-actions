@@ -193,7 +193,7 @@ See the [workflow](.github/workflows/mise.yml).
 
 <summary>Parallel testing without any code changes or extra dependencies.</summary>
 
-<br/>The matrix strategy can be used in a particular way to enable parallel testing for free. This means no code changes and no extra dependencies. This isn't a single runner using multiple cores, it's multiple runners each running its own set of tests.
+<br/>The matrix strategy can be used in a particular way to enable parallel testing for free. This means no code changes and no extra dependencies. This won't be a single runner using multiple cores, it's multiple runners each running its own set of tests. The idea is to identify where your tests are and then distrubute them across multiple machines.
 
 See the workflows:
 - [Directory-level parallel testing](.github/workflows/parallel_dir.yml)
