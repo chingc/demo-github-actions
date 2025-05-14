@@ -39,12 +39,11 @@ jobs:
         run: |
           from os import environ
           from pathlib import Path
-          test_dirs = set()
+
+          # Deduplicate directory paths.
           with open("collected.txt", encoding="utf-8") as lines:
-            for line in lines:
-              parts = line.strip().partition("::")
-              test_dirs.add(str(Path(parts[0]).parent))
-          test_dirs = sorted(list(test_dirs))
+            test_dirs = sorted({str(Path(line.partition("::")[0]).parent) for line in lines})
+
           print(f"::notice ::Directories: {test_dirs}")
           with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
             print(f"TEST_DIRS={test_dirs}", file=f)

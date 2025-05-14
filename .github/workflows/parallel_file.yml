@@ -39,17 +39,17 @@ jobs:
         run: |
           from os import environ
 
-          # Deduplicate file paths. The same file will show up
-          # multiple times because each file can have many tests.
+          # Deduplicate file paths.
           with open("collected.txt", encoding="utf-8") as lines:
-            paths = sorted({line.strip().partition("::")[0] for line in lines})
+            paths = sorted({line.partition("::")[0] for line in lines})
 
-          max_size = 3
+          max_size = 3  # Max files per group
           test_groups = {"include": []}
 
-          # Slice the list of paths into subgroups.
+          # Slice the list of paths into sublists and quote each path.
           for i, j in enumerate(range(0, len(paths), max_size), start=1):
-            test_groups["include"].append({"name": f"Group {i}", "files": " ".join(paths[j : j + max_size])})
+            quoted = [f"'{path}'" for path in paths[j : j + max_size]]
+            test_groups["include"].append({"name": f"Group {i}", "paths": " ".join(quoted)})
 
           print(f"::notice ::Groups: {test_groups}")
           with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
@@ -77,4 +77,6 @@ jobs:
           uv tree
 
       - name: Run test
-        run: uv run -- pytest '${{ matrix.files }}'
+        # Don't quote the matrix argument because it would cause pytest
+        # to treat the entire list of file paths as a single argument.
+        run: uv run -- pytest ${{ matrix.paths }}
