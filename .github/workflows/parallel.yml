@@ -11,7 +11,7 @@ jobs:
     name: Collect
     runs-on: ubuntu-latest
     outputs:
-      TEST_DIRS: "${{ steps.matrix.outputs.TEST_DIRS }}"
+      TEST_MATRIX: "${{ steps.matrix.outputs.TEST_DIRS }}"
 
     steps:
       - uses: actions/checkout@v4
@@ -44,7 +44,6 @@ jobs:
             for line in lines:
               parts = line.strip().partition("::")
               test_dirs.add(str(Path(parts[0]).parent))
-              print(parts)
           test_dirs = sorted(list(test_dirs))
           print(test_dirs)
           with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
@@ -76,4 +75,4 @@ jobs:
       - name: Run test
         run: uv run -- pytest tests/test_basic.py
 
-      - run: echo "TEST_DIRS is '${{ needs.collect.outputs.TEST_DIRS }}'"
+      - run: echo "TEST_MATRIX is '${{ needs.collect.outputs.TEST_MATRIX }}'"
