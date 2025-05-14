@@ -37,8 +37,8 @@ jobs:
         id: generate
         shell: uv run -- python {0}
         run: |
-          from pathlib import Path
           from os import environ
+          from pathlib import Path
           test_dirs = set()
           with open("collected.txt", encoding="utf-8") as lines:
             for line in lines:
@@ -74,11 +74,7 @@ jobs:
       # avoids duplicate test runs if there are nested test directories.
 
       - name: Set norecurse
-        run: |
-          cat << 'EOF' >> pytest.ini
-          [pytest]
-          norecursedirs = "*"
-          EOF
+        run: echo 'norecursedirs = "*"' >> pyproject.toml
 
       - name: Run test
         run: uv run -- pytest '${{ matrix.test_dirs }}'
