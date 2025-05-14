@@ -11,7 +11,7 @@ jobs:
     name: Collect
     runs-on: ubuntu-latest
     outputs:
-      TEST_MATRIX: "${{ steps.matrix.outputs.TEST_DIRS }}"
+      TEST_MATRIX: "${{ steps.matrix.outputs.TEST_MATRIX }}"
       FOO: "${{ steps.foo.outputs.FOO }}"
       BAR: "${{ steps.bar.outputs.BAR }}"
 
@@ -53,8 +53,8 @@ jobs:
           print(test_dirs)
           print(environ["GITHUB_OUTPUT"])
           with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
-            print(f"TEST_MATRIX='{test_dirs}'")
-            print(f"TEST_MATRIX='{test_dirs}'", file=f)
+            print(f'TEST_MATRIX="{test_dirs}"')
+            print(f'TEST_MATRIX="{test_dirs}"', file=f)
 
       - id: bar
         run: echo 'BAR=456' >> "${GITHUB_OUTPUT}"
