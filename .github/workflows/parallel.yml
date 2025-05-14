@@ -70,11 +70,12 @@ jobs:
           uv sync --locked; echo
           uv tree
 
-      # Prevent the test runner from recursing into subdirectories. This
-      # avoids duplicate test runs if there are nested test directories.
-
-      - name: Set norecurse
-        run: echo 'norecursedirs = "*"' >> pyproject.toml
+      - name: Set norecursedirs
+        # Prevent the test runner from recursing into subdirectories. This
+        # avoids duplicate test runs if there are nested test directories.
+        run: |
+          echo 'norecursedirs = "*"' >> pyproject.toml
+          echo '::notice ::Enabled pytest norecursedirs.'
 
       - name: Run test
         run: uv run -- pytest '${{ matrix.test_dirs }}'
