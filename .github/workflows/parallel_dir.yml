@@ -44,9 +44,8 @@ jobs:
             for line in lines:
               parts = line.strip().partition("::")
               test_dirs.add(str(Path(parts[0]).parent))
-          # test_dirs = { "test_dirs": sorted(list(test_dirs)) }
           test_dirs = sorted(list(test_dirs))
-          print(test_dirs)
+          print(f"::notice ::Directories: {test_dirs}")
           with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
             print(f"TEST_DIRS={test_dirs}", file=f)
 
@@ -72,7 +71,7 @@ jobs:
           uv sync --locked; echo
           uv tree
 
-      - name: Set norecursedirs
+      - name: Set pytest norecursedirs
         # Prevent the test runner from recursing into subdirectories. This
         # avoids duplicate test runs if there are nested test directories.
         run: |
