@@ -11,7 +11,7 @@ jobs:
     name: Collect
     runs-on: ubuntu-latest
     outputs:
-      TEST_DIRS: "${{ steps.generate.outputs.TEST_DIRS }}"
+      directories: "${{ steps.build.outputs.TEST_DIRS }}"
 
     steps:
       - uses: actions/checkout@v4
@@ -33,8 +33,8 @@ jobs:
           sed -e '$d' collected.tmp | sed -e '$d' | tee collected.txt
           echo '::endgroup::'
 
-      - name: Generate matrix
-        id: generate
+      - name: Build test matrix
+        id: build
         shell: uv run -- python {0}
         run: |
           from os import environ
@@ -55,7 +55,8 @@ jobs:
     needs: collect
 
     strategy:
-      matrix: ${{ fromJSON(needs.collect.outputs.TEST_DIRS) }}
+      matrix:
+        directory: ${{ fromJSON(needs.collect.outputs.directories) }}
 
     steps:
       - uses: actions/checkout@v4
@@ -78,4 +79,4 @@ jobs:
           echo '::notice ::Enabled pytest norecursedirs.'
 
       - name: Run test
-        run: uv run -- pytest '${{ matrix.test_dirs }}'
+        run: uv run -- pytest '${{ matrix.directory }}'

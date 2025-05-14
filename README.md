@@ -165,7 +165,7 @@ See the [workflow](.github/workflows/log_annotation.yml).
 
 <summary>Define a matrix of different job configurations.</summary>
 
-<br/>The matrix strategy lets easily target multiple operating systems or test multiple versions of a language.
+<br/>The matrix strategy helps you easily target multiple operating systems and language versions.
 
 - Uses `actions/setup-node`
 
@@ -184,6 +184,20 @@ See the [workflow](.github/workflows/matrix.yml).
 - Uses `jdx/mise-action`
 
 See the [workflow](.github/workflows/mise.yml).
+
+</details>
+
+## parallel_*.yml
+
+<details>
+
+<summary>Parallel testing without any code changes or extra dependencies.</summary>
+
+<br/>The matrix strategy can be used in a particular way to enable parallel testing for free. This means no code changes and no extra dependencies. This isn't a single runner using multiple cores, it's multiple runners each running its own set of tests.
+
+See the workflows:
+- [Directory-level parallel testing](.github/workflows/parallel_dir.yml)
+- [File-level parallel testing](.github/workflows/parallel_file.yml)
 
 </details>
 
