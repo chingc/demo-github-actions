@@ -56,7 +56,6 @@ jobs:
 
     strategy:
       matrix: ${{ fromJSON(needs.collect.outputs.TEST_DIRS) }}
-        # test_dir: ["tests", "tests/dir1", "tests/dir2", "tests/dir3"]
 
     steps:
       - uses: actions/checkout@v4
@@ -71,7 +70,15 @@ jobs:
           uv sync --locked; echo
           uv tree
 
+      # Prevent the test runner from recursing into subdirectories. This
+      # avoids duplicate test runs if there are nested test directories.
+
+      - name: Set norecurse
+        run: |
+          cat << 'EOF' >> pytest.ini
+          [pytest]
+          norecursedirs = "*"
+          EOF
+
       - name: Run test
         run: uv run -- pytest '${{ matrix.test_dirs }}'
-
-      - run: echo "TEST_DIRS is '${{ needs.collect.outputs.TEST_DIRS }}'"
