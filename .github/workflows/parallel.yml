@@ -54,10 +54,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: collect
 
-    # strategy:
-    #   matrix:
+    strategy:
+      matrix:
+        test_dir: ${{ needs.collect.outputs.TEST_MATRIX }}
     #     test_dir: ["tests", "tests/dir1", "tests/dir2", "tests/dir3"]
-    # test_dir: "${{ needs.collect.outputs.TEST_MATRIX }}"
 
     steps:
       - uses: actions/checkout@v4
@@ -72,7 +72,7 @@ jobs:
           uv sync --locked; echo
           uv tree
 
-      # - name: Run test
-      #   run: uv run -- pytest '${{ matrix.test_dir }}'
+      - name: Run test
+        run: uv run -- pytest '${{ matrix.test_dir }}'
 
       - run: echo "TEST_MATRIX is '${{ needs.collect.outputs.TEST_MATRIX }}'"
