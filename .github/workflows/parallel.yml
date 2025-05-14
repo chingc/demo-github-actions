@@ -53,6 +53,7 @@ jobs:
           print(test_dirs)
           print(environ["GITHUB_OUTPUT"])
           with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+            print(f"TEST_MATRIX='{test_dirs}'")
             print(f"TEST_MATRIX='{test_dirs}'", file=f)
 
       - id: bar
