@@ -10,6 +10,8 @@ jobs:
   collect:
     name: Collect
     runs-on: ubuntu-latest
+    outputs:
+      TEST_DIRS: "${{ steps.matrix.outputs.TEST_DIRS }}"
 
     steps:
       - uses: actions/checkout@v4
@@ -31,15 +33,27 @@ jobs:
           sed -e '$d' collected.tmp | sed -e '$d' | tee collected.txt
           echo '::endgroup::'
 
-      - shell: uv run -- python {0}
+      - name: Generate matrix
+        id: matrix
+        shell: uv run -- python {0}
         run: |
+          from pathlib import Path
+          from os import environ
+          test_dirs = set()
           with open("collected.txt", encoding="utf-8") as lines:
             for line in lines:
-              print(line.strip().partition("::"))
+              parts = line.strip().partition("::")
+              test_dirs.add(str(Path(parts[0]).parent))
+              print(parts)
+          test_dirs = sorted(list(test_dirs))
+          print(test_dirs)
+          with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+            print(f"TEST_MATRIX={test_dirs}", file=f)
 
   test:
     name: Test
     runs-on: ubuntu-latest
+    needs: collect
 
     # strategy:
     #   matrix:
@@ -61,3 +75,5 @@ jobs:
 
       - name: Run test
         run: uv run -- pytest tests/test_basic.py
+
+      - run: echo "TEST_DIRS is '${{ needs.collect.outputs.TEST_DIRS }}'"
