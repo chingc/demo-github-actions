@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       TEST_MATRIX: "${{ steps.matrix.outputs.TEST_DIRS }}"
+      FOO: "${{ steps.foo.outputs.FOO }}"
+      BAR: "${{ steps.bar.outputs.BAR }}"
 
     steps:
       - uses: actions/checkout@v4
@@ -33,6 +35,9 @@ jobs:
           sed -e '$d' collected.tmp | sed -e '$d' | tee collected.txt
           echo '::endgroup::'
 
+      - id: foo
+        run: echo 'FOO=123' >> "${GITHUB_OUTPUT}"
+
       - name: Generate matrix
         id: matrix
         shell: uv run -- python {0}
@@ -46,8 +51,12 @@ jobs:
               test_dirs.add(str(Path(parts[0]).parent))
           test_dirs = sorted(list(test_dirs))
           print(test_dirs)
+          print(environ["GITHUB_OUTPUT"])
           with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
-            print(f"TEST_MATRIX={test_dirs}", file=f)
+            print(f"TEST_MATRIX='{test_dirs}'", file=f)
+
+      - id: bar
+        run: echo 'BAR=456' >> "${GITHUB_OUTPUT}"
 
   test:
     name: Test
@@ -76,3 +85,6 @@ jobs:
         run: uv run -- pytest tests/test_basic.py
 
       - run: echo "TEST_MATRIX is '${{ needs.collect.outputs.TEST_MATRIX }}'"
+
+      - run: echo "FOO is '${{ needs.collect.outputs.FOO }}'"
+      - run: echo "BAR is '${{ needs.collect.outputs.BAR }}'"
