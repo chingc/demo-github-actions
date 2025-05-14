@@ -78,4 +78,5 @@ jobs:
           echo '::notice ::Enabled pytest norecursedirs.'
 
       - name: Run test
+        # Quote the matrix argument because the path may contain spaces.
         run: uv run -- pytest '${{ matrix.directory }}'

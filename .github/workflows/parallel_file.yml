@@ -46,7 +46,8 @@ jobs:
           max_size = 3  # Max files per group
           test_groups = {"include": []}
 
-          # Slice the list of paths into sublists and quote each path.
+          # Slice the list of paths into sublists. We also take the precaution
+          # to quote each path in case there are spaces within the path.
           for i, j in enumerate(range(0, len(paths), max_size), start=1):
             quoted = [f"'{path}'" for path in paths[j : j + max_size]]
             test_groups["include"].append({"name": f"Group {i}", "paths": " ".join(quoted)})
@@ -77,6 +78,6 @@ jobs:
           uv tree
 
       - name: Run test
-        # Don't quote the matrix argument because it would cause pytest
-        # to treat the entire list of file paths as a single argument.
+        # Don't quote the matrix argument because it causes the shell
+        # to treat the entire list of paths as a single argument.
         run: uv run -- pytest ${{ matrix.paths }}
