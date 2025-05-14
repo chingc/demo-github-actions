@@ -165,7 +165,7 @@ See the [workflow](.github/workflows/log_annotation.yml).
 
 <summary>Define a matrix of different job configurations.</summary>
 
-<br/>The matrix strategy lets easily target multiple operating systems or test multiple versions of a language.
+<br/>The matrix strategy helps you easily target multiple operating systems and language versions.
 
 - Uses `actions/setup-node`
 
@@ -187,6 +187,20 @@ See the [workflow](.github/workflows/mise.yml).
 
 </details>
 
+## parallel_*.yml
+
+<details>
+
+<summary>Parallel testing without any code changes or extra dependencies.</summary>
+
+<br/>The matrix strategy can be used in a particular way to enable parallel testing for free. This means no code changes and no extra dependencies. This won't be a single runner using multiple cores, it's multiple runners each running its own set of tests. The idea is to identify where your tests are and then distrubute them across multiple machines. If your test runner supports parallel testing, you can use that in combination with this strategy to really go fast!
+
+See the workflows:
+- [Directory-level parallel testing](.github/workflows/parallel_dir.yml)
+- [File-level parallel testing](.github/workflows/parallel_file.yml)
+
+</details>
+
 ## References
 
 - [GitHub Actions](https://docs.github.com/en/actions)
@@ -196,10 +210,13 @@ See the [workflow](.github/workflows/mise.yml).
 - [GitHub Actions: Adding a system path](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-system-path)
 - [GitHub Actions: Caching dependencies to speed up workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows)
 - [GitHub Actions: Events that trigger workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows)
+- [Running variations of jobs in a workflow](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow)
+- [GitHub Actions: Setting an environment variable](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-environment-variable)
+<br/><br/>
+- [GitHub Actions: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
+- [GitHub Actions: env](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#env)
 - [GitHub Actions: jobs.<job_id>.outputs](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idoutputs)
 - [GitHub Actions: jobs.<job_id>.strategy.matrix](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix)
-- [GitHub Actions: Setting an environment variable](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-environment-variable)
-- [GitHub Actions: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
 <br/><br/>
 - [actions/cache](https://github.com/actions/cache)
 - [actions/checkout](https://github.com/actions/checkout)

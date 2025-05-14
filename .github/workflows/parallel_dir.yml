@@ -1,0 +1,82 @@
+name: Parallel (dir)
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
+  workflow_dispatch:
+
+jobs:
+  collect:
+    name: Collect
+    runs-on: ubuntu-latest
+    outputs:
+      directories: "${{ steps.build.outputs.TEST_DIRS }}"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install python dependencies
+        run: |
+          uv python install; echo
+          uv sync --locked; echo
+          uv tree
+
+      - name: Collect tests
+        run: |
+          uv run -- pytest --collect-only --quiet | tee collected.tmp
+          echo '::group::Delete the last two lines'
+          sed -e '$d' collected.tmp | sed -e '$d' | tee collected.txt
+          echo '::endgroup::'
+
+      - name: Build test matrix
+        id: build
+        shell: uv run -- python {0}
+        run: |
+          from os import environ
+          from pathlib import Path
+
+          # Deduplicate directory paths.
+          with open("collected.txt", encoding="utf-8") as lines:
+            test_dirs = sorted({str(Path(line.partition("::")[0]).parent) for line in lines})
+
+          print(f"::notice ::Directories: {test_dirs}")
+          with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+            print(f"TEST_DIRS={test_dirs}", file=f)
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: collect
+
+    strategy:
+      matrix:
+        directory: ${{ fromJSON(needs.collect.outputs.directories) }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install python dependencies
+        run: |
+          uv python install; echo
+          uv sync --locked; echo
+          uv tree
+
+      - name: Set pytest norecursedirs
+        # Prevent the test runner from recursing into subdirectories. This
+        # avoids duplicate test runs if there are nested test directories.
+        run: |
+          echo 'norecursedirs = "*"' >> pyproject.toml
+          echo '::notice ::Enabled pytest norecursedirs.'
+
+      - name: Run test
+        # Quote the matrix argument because the path may contain spaces.
+        run: uv run -- pytest '${{ matrix.directory }}'

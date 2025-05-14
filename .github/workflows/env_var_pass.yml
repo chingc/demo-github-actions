@@ -14,9 +14,9 @@ jobs:
     steps:
       - name: Set environment variable (takes effect in subsequent steps)
         run: |
-          echo "FOO=abc" >> "${GITHUB_ENV}"
-          echo "BAR=123" >> "${GITHUB_ENV}"
-          echo "No effect in the current step."
+          echo 'FOO=abc' >> "${GITHUB_ENV}"
+          echo 'BAR=123' >> "${GITHUB_ENV}"
+          echo 'No effect in the current step.'
           echo "FOO is '${FOO}'"
           echo "BAR is '${BAR}'"
 
@@ -42,7 +42,7 @@ jobs:
         id: pass
         run: |
           # Single-line using echo
-          echo "GREETING=Hello, World!" >> "${GITHUB_OUTPUT}"
+          echo 'GREETING=Hello, World!' >> "${GITHUB_OUTPUT}"
 
           # Multi-line using heredoc
           {
@@ -62,5 +62,5 @@ jobs:
 
       - name: Show RESPONSE
         run: |
-          echo "RESPONSE is"
+          echo 'RESPONSE is'
           echo '${{ needs.job2.outputs.RESPONSE }}'
