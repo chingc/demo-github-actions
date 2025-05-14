@@ -39,25 +39,25 @@ jobs:
         run: |
           from pathlib import Path
           from os import environ
-          test_dirs = set()
+          matrix = set()
           with open("collected.txt", encoding="utf-8") as lines:
             for line in lines:
               parts = line.strip().partition("::")
-              test_dirs.add(f"'{Path(parts[0]).parent}'") # Add single-quotes around path
-          test_dirs = sorted(list(test_dirs))
-          print(test_dirs)
+              matrix.add(str(Path(parts[0]).parent))
+          matrix = sorted(list(matrix))
+          print(matrix)
           with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
-            print(f"TEST_MATRIX='{test_dirs}'", file=f)
+            print(f"TEST_MATRIX={matrix}", file=f)
 
   test:
     name: Test
     runs-on: ubuntu-latest
     needs: collect
 
-    # strategy:
-    #   matrix:
-    #     os: [ubuntu-latest, macos-latest, windows-latest]
-    #     node: [20, 22]
+    strategy:
+      matrix:
+        test_dir: ["tests", "tests/dir1", "tests/dir2", "tests/dir3"]
+        # test_dir: "${{ needs.collect.outputs.TEST_MATRIX }}"
 
     steps:
       - uses: actions/checkout@v4
@@ -73,6 +73,4 @@ jobs:
           uv tree
 
       - name: Run test
-        run: uv run -- pytest tests/test_basic.py
-
-      - run: echo "TEST_MATRIX is '${{ needs.collect.outputs.TEST_MATRIX }}'"
+        run: uv run -- pytest '${{ matrix.test_dir }}'
