@@ -61,7 +61,7 @@ See the [workflow](.github/workflows/branch_name.yml).
 
 <details>
 
-<summary>Caching data.</summary>
+<summary>Data persistence by caching.</summary>
 
 <br/>You can cache files, directories, or a combination of them. If you want to test for a cache hit, keep in mind that it only occurs if it matches the primary cache `key`. A partial match on `restore-keys` is still considered a cache miss.
 
@@ -193,7 +193,7 @@ See the [workflow](.github/workflows/mise.yml).
 
 <summary>Parallel testing without any code changes or extra dependencies.</summary>
 
-<br/>The matrix strategy can be used in a particular way to enable parallel testing for free. This means no code changes and no extra dependencies. This won't be a single runner using multiple cores, it's multiple runners each running its own set of tests. The idea is to identify where your tests are and then distrubute them across multiple machines. If your test runner supports parallel testing, you can use that in combination with this strategy to really go fast!
+<br/>The matrix strategy can be used in a particular way to enable parallel testing for free. This means no code changes and no extra dependencies. The idea is to identify where your tests are and distrubute them across multiple GitHub Actions runners. If your testing framework supports parallel testing, you can use it in combination with this strategy to really go fast!
 
 See the workflows:
 - [Directory-level parallel testing](.github/workflows/parallel_dir.yml)
@@ -209,8 +209,9 @@ See the workflows:
 - [GitHub Actions: Adding a log annotation](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-a-notice-message)
 - [GitHub Actions: Adding a system path](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-system-path)
 - [GitHub Actions: Caching dependencies to speed up workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows)
+- [GitHub Actions: Evaluate expressions in workflows and actions](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions-in-workflows-and-actions)
 - [GitHub Actions: Events that trigger workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows)
-- [Running variations of jobs in a workflow](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow)
+- [GitHub Actions: Running variations of jobs in a workflow](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow)
 - [GitHub Actions: Setting an environment variable](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-environment-variable)
 <br/><br/>
 - [GitHub Actions: Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
