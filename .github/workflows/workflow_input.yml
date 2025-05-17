@@ -1,0 +1,48 @@
+name: Workflow Input
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *" # Midnight every month (UTC)
+  workflow_dispatch:
+    inputs:
+      log_level:
+        description: Log level
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+        default: info
+      build_version:
+        description: Build version
+        type: number
+        default: 1.0
+      deploy_target:
+        description: Deploy target
+        type: string
+        default: staging 1a
+      notify_on_error:
+        description: Notify on error
+        type: boolean
+        default: true
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Workflow inputs
+        run: |
+          echo 'Log level: ${{ inputs.log_level }}'
+          echo 'Build version: ${{ inputs.build_version }}'
+          echo 'Deploy target: ${{ inputs.deploy_target }}'
+
+      - if: ${{ inputs.notify_on_error }}
+        name: Notify on error ENABLED
+        run: echo 'Contact relevant parties.'
+
+      - if: ${{ !inputs.notify_on_error }}
+        name: Notify on error DISABLED
+        run: echo 'It can wait.'
