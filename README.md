@@ -201,6 +201,22 @@ See the workflows:
 
 </details>
 
+## workflow_input.yml
+
+<details>
+
+<summary>Adjust how a workflow will run with custom input.</summary>
+
+<br/>When using the `workflow_dispatch` event, you can optionally specify inputs that are passed to the workflow.
+
+This trigger only receives events when the workflow file is on the default branch. This means you have to merge your changes to `main` or `master` before you can test your inputs. It would be wise to try input changes in a totally separate workflow before merging them into critical workflows.
+
+Also, if the event that triggers the workflow isn't `workflow_dispatch` the input values are empty/null. This is true even if you have default values defined.
+
+See the [workflow](.github/workflows/workflow_input.yml).
+
+</details>
+
 ## References
 
 - [GitHub Actions](https://docs.github.com/en/actions)
