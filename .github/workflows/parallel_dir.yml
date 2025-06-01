@@ -40,7 +40,7 @@ jobs:
           from os import environ
           from pathlib import Path
 
-          # Deduplicate directory paths.
+          # For each test, get the file's parent directory. Use a set to avoid duplication.
           with open("collected.txt", encoding="utf-8") as lines:
             test_dirs = sorted({str(Path(line.partition("::")[0]).parent) for line in lines})
 

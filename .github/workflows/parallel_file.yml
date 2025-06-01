@@ -39,18 +39,21 @@ jobs:
         run: |
           from os import environ
 
-          # Deduplicate file paths.
+          # For each test, get its file name. Use a set to avoid duplication.
           with open("collected.txt", encoding="utf-8") as lines:
             paths = sorted({line.partition("::")[0] for line in lines})
+
+          # As a precaution, quote each path in case it has spaces.
+          paths = [f"'{path}'" for path in paths]
 
           max_size = 3  # Max files per group
           test_groups = {"include": []}
 
-          # Slice the list of paths into sublists. We also take the precaution
-          # to quote each path in case there are spaces within the path.
+          # Slice the list of paths into sublists, and concat
+          # it into a single space-separated string.
           for i, j in enumerate(range(0, len(paths), max_size), start=1):
-            quoted = [f"'{path}'" for path in paths[j : j + max_size]]
-            test_groups["include"].append({"name": f"Group {i}", "paths": " ".join(quoted)})
+            sublist = paths[j : j + max_size]
+            test_groups["include"].append({"name": f"Group {i}", "paths": " ".join(sublist)})
 
           print(f"::notice ::Groups: {test_groups}")
           with open(environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
