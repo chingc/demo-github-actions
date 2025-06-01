@@ -1,4 +1,4 @@
-name: Basic (uv)
+name: uv
 
 on:
   push:
