@@ -18,19 +18,7 @@ A collection of small GitHub Actions workflows demonstrating various capabilitie
 - Installs `requirements.txt` and runs a simple test
 - Includes `dependabot.yml` to automatically check for package updates
 
-See the [workflow](.github/workflows/basic.yml).
-
-</details>
-
-## basic_uv.yml
-
-<details>
-
-<summary>Same as basic.yml but uses the uv project manager.</summary>
-
-<br/>
-
-See the [workflow](.github/workflows/basic_uv.yml).
+See the [workflow](.github/workflows/basic.yml) and [dependabot](.github/dependabot.yml).
 
 </details>
 
@@ -193,11 +181,27 @@ See the [workflow](.github/workflows/mise.yml).
 
 <summary>Parallel testing without any code changes or extra dependencies.</summary>
 
-<br/>The matrix strategy can be used in a particular way to enable parallel testing for free. This means no code changes and no extra dependencies. The idea is to identify where your tests are and distrubute them across multiple GitHub Actions runners. If your testing framework supports parallel testing, you can use it in combination with this strategy to really go fast!
+<br/>The matrix strategy can be used in a particular way to enable parallel testing for free. "Free" meaning no code changes and no extra dependencies. This example uses Python, but can be adapted to any language. The idea is to identify where your tests are and distrubute them across multiple GitHub Actions runners. If your testing framework supports parallel testing, you can use it together with this strategy to really go fast!
+
+Note: This will increase the number of runners used, so keep an eye on your usage to avoid billing surprises.
 
 See the workflows:
 - [Directory-level parallel testing](.github/workflows/parallel_dir.yml)
 - [File-level parallel testing](.github/workflows/parallel_file.yml)
+
+</details>
+
+## uv.yml
+
+<details>
+
+<summary>Using uv in your workflow.</summary>
+
+<br/>Same as basic.yml but uses the uv project manager.
+
+- Uses `astral-sh/setup-uv`
+
+See the [workflow](.github/workflows/uv.yml).
 
 </details>
 
@@ -237,6 +241,7 @@ See the [workflow](.github/workflows/workflow_input.yml).
 - [actions/github-script](https://github.com/actions/github-script)
 - [actions/setup-node](https://github.com/actions/setup-node)
 - [actions/setup-python](https://github.com/actions/setup-python)
+- [astral-sh/setup-uv](https://github.com/astral-sh/setup-uv)
 - [Homebrew/actions/setup-homebrew](https://github.com/Homebrew/actions/tree/master/setup-homebrew)
 - [jdx/mise-action](https://github.com/jdx/mise-action)
 <br/><br/>
