@@ -20,9 +20,7 @@ jobs:
           cache: pip
 
       - name: Show python version
-        run: |
-          python --version
-          pip --version
+        run: python --version && pip --version
 
       - name: Install python dependencies
         run: |

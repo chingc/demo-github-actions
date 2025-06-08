@@ -2,7 +2,11 @@
 
 A collection of small GitHub Actions workflows demonstrating various capabilities and features to get you started.
 
-## basic.yml
+## 1st Party
+
+These examples use only tools and actions from GitHub.
+
+### basic.yml
 
 <details>
 
@@ -22,7 +26,7 @@ See the [workflow](.github/workflows/basic.yml) and [dependabot](.github/dependa
 
 </details>
 
-## branch_name.yml
+### branch_name.yml
 
 <details>
 
@@ -45,7 +49,7 @@ See the [workflow](.github/workflows/branch_name.yml).
 
 </details>
 
-## cache.yml
+### cache.yml
 
 <details>
 
@@ -59,7 +63,7 @@ See the [workflow](.github/workflows/cache.yml).
 
 </details>
 
-## context.yml
+### context.yml
 
 <details>
 
@@ -71,7 +75,7 @@ See the [workflow](.github/workflows/context.yml).
 
 </details>
 
-## env_var_*.yml
+### env_var_*.yml
 
 <details>
 
@@ -91,7 +95,7 @@ See the workflows:
 
 </details>
 
-## github_script.yml
+### github_script.yml
 
 <details>
 
@@ -105,21 +109,7 @@ See the [workflow](.github/workflows/github_script.yml).
 
 </details>
 
-## homebrew.yml
-
-<details>
-
-<summary>Using homebrew in your workflow.</summary>
-
-<br/>Leverage the convenience of homebrew to install applications on GitHub Actions runners.
-
-- Uses `Homebrew/actions/setup-homebrew`
-
-See the [workflow](.github/workflows/homebrew.yml).
-
-</details>
-
-## job_summary.yml
+### job_summary.yml
 
 <details>
 
@@ -135,7 +125,7 @@ See the [workflow](.github/workflows/job_summary.yml).
 
 </details>
 
-## log_annotation.yml
+### log_annotation.yml
 
 <details>
 
@@ -147,7 +137,7 @@ See the [workflow](.github/workflows/log_annotation.yml).
 
 </details>
 
-## matrix.yml
+### matrix.yml
 
 <details>
 
@@ -161,21 +151,7 @@ See the [workflow](.github/workflows/matrix.yml).
 
 </details>
 
-## mise.yml
-
-<details>
-
-<summary>Using mise in your workflow.</summary>
-
-<br/>The polyglot tool version manager.
-
-- Uses `jdx/mise-action`
-
-See the [workflow](.github/workflows/mise.yml).
-
-</details>
-
-## parallel_*.yml
+### parallel_*.yml
 
 <details>
 
@@ -191,21 +167,7 @@ See the workflows:
 
 </details>
 
-## uv.yml
-
-<details>
-
-<summary>Using uv in your workflow.</summary>
-
-<br/>Same as basic.yml but uses the uv project manager.
-
-- Uses `astral-sh/setup-uv`
-
-See the [workflow](.github/workflows/uv.yml).
-
-</details>
-
-## workflow_input.yml
+### workflow_input.yml
 
 <details>
 
@@ -218,6 +180,52 @@ This trigger only receives events when the workflow file is on the default branc
 Also, if the event that triggers the workflow isn't `workflow_dispatch` the input values are empty/null. This is true even if you have default values defined.
 
 See the [workflow](.github/workflows/workflow_input.yml).
+
+</details>
+
+## 3rd Party
+
+These examples include tools and actions from 3rd parties.
+
+### homebrew.yml
+
+<details>
+
+<summary>Using homebrew in your workflow.</summary>
+
+<br/>Leverage the convenience of homebrew to install applications on GitHub Actions runners.
+
+- Uses `Homebrew/actions/setup-homebrew`
+
+See the [workflow](.github/workflows/homebrew.yml).
+
+</details>
+
+### mise.yml
+
+<details>
+
+<summary>Using mise in your workflow.</summary>
+
+<br/>The polyglot tool and project manager.
+
+- Uses `jdx/mise-action`
+
+See the [workflow](.github/workflows/mise.yml).
+
+</details>
+
+### uv.yml
+
+<details>
+
+<summary>Using uv in your workflow.</summary>
+
+<br/>Same as basic.yml but uses the uv Python project manager.
+
+- Uses `astral-sh/setup-uv`
+
+See the [workflow](.github/workflows/uv.yml).
 
 </details>
 

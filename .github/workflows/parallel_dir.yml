@@ -16,26 +16,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-python@v5
         with:
-          enable-cache: true
+          python-version-file: .python-version
+          cache: pip
+
+      - name: Show python version
+        run: python --version && pip --version
 
       - name: Install python dependencies
         run: |
-          uv python install; echo
-          uv sync --locked; echo
-          uv tree
+          pip install --upgrade pip setuptools wheel
+          pip install --requirement requirements.txt
 
       - name: Collect tests
         run: |
-          uv run -- pytest --collect-only --quiet | tee collected.tmp
+          pytest --collect-only --quiet | tee collected.tmp
           echo '::group::Delete the last two lines'
           sed -e '$d' collected.tmp | sed -e '$d' | tee collected.txt
           echo '::endgroup::'
 
       - name: Build test matrix
         id: build
-        shell: uv run -- python {0}
+        shell: python
         run: |
           from os import environ
           from pathlib import Path
@@ -60,15 +63,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-python@v5
         with:
-          enable-cache: true
+          python-version-file: .python-version
+          cache: pip
+
+      - name: Show python version
+        run: python --version && pip --version
 
       - name: Install python dependencies
         run: |
-          uv python install; echo
-          uv sync --locked; echo
-          uv tree
+          pip install --upgrade pip setuptools wheel
+          pip install --requirement requirements.txt
 
       - name: Set pytest norecursedirs
         # Prevent the test runner from recursing into subdirectories. This
@@ -79,4 +85,4 @@ jobs:
 
       - name: Run test
         # Quote the matrix argument because the path may contain spaces.
-        run: uv run -- pytest '${{ matrix.directory }}'
+        run: pytest '${{ matrix.directory }}'

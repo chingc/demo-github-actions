@@ -24,5 +24,12 @@ jobs:
           uv sync --locked; echo
           uv tree
 
+      - name: Python shell with uv
+        shell: uv run -- python {0}
+        run: |
+          import sys
+          print(f"Running: {sys.version}")
+          print("Hello, World!")
+
       - name: Run test
         run: uv run -- pytest tests/test_basic.py
