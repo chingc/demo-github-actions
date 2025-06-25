@@ -22,7 +22,9 @@ These examples use only tools and actions from GitHub.
 - Installs `requirements.txt` and runs a simple test
 - Includes `dependabot.yml` to automatically check for package updates
 
-See the [workflow](.github/workflows/basic.yml) and [dependabot](.github/dependabot.yml).
+View [Workflow](.github/workflows/basic.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/basic.yml)<br/>
+View [Dependabot](.github/dependabot.yml)
 
 </details>
 
@@ -45,7 +47,8 @@ You may also get an unexpected result depending on the event that triggered the 
 - Shows various `github` context properties that may or may not contain the branch name
 - Sets branch name to the top level `env` so it can be accessed by the entire workflow
 
-See the [workflow](.github/workflows/branch_name.yml).
+View [Workflow](.github/workflows/branch_name.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/branch_name.yml)
 
 </details>
 
@@ -59,7 +62,8 @@ See the [workflow](.github/workflows/branch_name.yml).
 
 - Uses `actions/cache`
 
-See the [workflow](.github/workflows/cache.yml).
+View [Workflow](.github/workflows/cache.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/cache.yml)
 
 </details>
 
@@ -71,7 +75,8 @@ See the [workflow](.github/workflows/cache.yml).
 
 <br/>You can access various contexts about the workflow run, which can be helpful for debugging workflow errors or bugs. Be careful as it has the potential to output sensitive information.
 
-See the [workflow](.github/workflows/context.yml).
+View [Workflow](.github/workflows/context.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/context.yml)
 
 </details>
 
@@ -87,11 +92,17 @@ They're also fairly self-contained, so any changes you make are isolated to the 
 
 One quirk that can cause confusion is the fact that environment variables defined within a step aren't accessible until the next step.
 
-See the workflows:
-- [Reading](.github/workflows/env_var_read.yml)
-- [Writing](.github/workflows/env_var_write.yml)
-- [Passing](.github/workflows/env_var_pass.yml)
-- [System PATH](.github/workflows/env_var_path.yml)
+View [Workflow](.github/workflows/env_var_read.yml) (Reading)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/env_var_read.yml)
+
+View [Workflow](.github/workflows/env_var_write.yml) (Writing)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/env_var_write.yml)
+
+View [Workflow](.github/workflows/env_var_pass.yml) (Passing)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/env_var_pass.yml)
+
+View [Workflow](.github/workflows/env_var_path.yml) (System PATH)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/env_var_path.yml)
 
 </details>
 
@@ -105,7 +116,8 @@ See the workflows:
 
 - Uses `actions/github-script`
 
-See the [workflow](.github/workflows/github_script.yml).
+View [Workflow](.github/workflows/github_script.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/github_script.yml)
 
 </details>
 
@@ -121,7 +133,8 @@ When a job finishes, the summaries for all steps in a job are grouped together i
 
 Job summaries are isolated between steps and each step is restricted to a maximum size of 1MB. A maximum of 20 job summaries from steps are displayed per job.
 
-See the [workflow](.github/workflows/job_summary.yml).
+View [Workflow](.github/workflows/job_summary.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/job_summary.yml)
 
 </details>
 
@@ -133,7 +146,8 @@ See the [workflow](.github/workflows/job_summary.yml).
 
 <br/>You can create `notice`, `warning`, and `error` annotations in your workflow logs. Optionally, they can be associated with a file and even a position within the file. Annotations also show up on the job summary page.
 
-See the [workflow](.github/workflows/log_annotation.yml).
+View [Workflow](.github/workflows/log_annotation.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/log_annotation.yml)
 
 </details>
 
@@ -147,7 +161,8 @@ See the [workflow](.github/workflows/log_annotation.yml).
 
 - Uses `actions/setup-node`
 
-See the [workflow](.github/workflows/matrix.yml).
+View [Workflow](.github/workflows/matrix.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/matrix.yml)
 
 </details>
 
@@ -161,9 +176,11 @@ See the [workflow](.github/workflows/matrix.yml).
 
 Note: This will increase the number of runners used, so keep an eye on your usage to avoid billing surprises.
 
-See the workflows:
-- [Directory-level parallel testing](.github/workflows/parallel_dir.yml)
-- [File-level parallel testing](.github/workflows/parallel_file.yml)
+View [Workflow](.github/workflows/parallel_dir.yml) (Directory-level Parallelization)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/parallel_dir.yml)
+
+View [Workflow](.github/workflows/parallel_file.yml) (File-level Parallelization)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/parallel_file.yml)
 
 </details>
 
@@ -179,7 +196,8 @@ This trigger only receives events when the workflow file is on the default branc
 
 Also, if the event that triggers the workflow isn't `workflow_dispatch` the input values are empty/null. This is true even if you have default values defined.
 
-See the [workflow](.github/workflows/workflow_input.yml).
+View [Workflow](.github/workflows/workflow_input.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/workflow_input.yml)
 
 </details>
 
@@ -197,7 +215,8 @@ These examples include tools and actions from 3rd parties.
 
 - Uses `Homebrew/actions/setup-homebrew`
 
-See the [workflow](.github/workflows/homebrew.yml).
+View [Workflow](.github/workflows/homebrew.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/homebrew.yml)
 
 </details>
 
@@ -211,7 +230,8 @@ See the [workflow](.github/workflows/homebrew.yml).
 
 - Uses `jdx/mise-action`
 
-See the [workflow](.github/workflows/mise.yml).
+View [Workflow](.github/workflows/mise.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/mise.yml)
 
 </details>
 
@@ -225,7 +245,8 @@ See the [workflow](.github/workflows/mise.yml).
 
 - Uses `astral-sh/setup-uv`
 
-See the [workflow](.github/workflows/uv.yml).
+View [Workflow](.github/workflows/uv.yml)<br/>
+View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/uv.yml)
 
 </details>
 
