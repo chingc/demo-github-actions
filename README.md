@@ -60,6 +60,8 @@ View [Runs](https://github.com/chingc/tutorial-github-actions/actions/workflows/
 
 <br/>You can cache files, directories, or a combination of them. If you want to test for a cache hit, keep in mind that it only occurs if it matches the primary cache `key`. A partial match on `restore-keys` is still considered a cache miss.
 
+GitHub will remove any cache entries that have not been accessed in over 7 days. There is no limit on the number of caches you can store, but the total size of all caches in a repository is limited to 10 GB. Beyond this, the cache eviction policy will create space by deleting the caches in order of last access date, from oldest to most recent.
+
 - Uses `actions/cache`
 
 View [Workflow](.github/workflows/cache.yml)<br/>

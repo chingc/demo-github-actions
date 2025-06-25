@@ -25,7 +25,7 @@ jobs:
           if [[ -f 'dates.txt' ]]; then
             cat dates.txt
           else
-            echo 'Initial run. File not found. Creating...'
+            echo 'File not found. Creating...'
             touch dates.txt
           fi
 
